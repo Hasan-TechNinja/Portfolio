@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load static %} {% load static tailwind_tags %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    {% tailwind_css %}
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="icon" type="image/x-icon" href="{% static "image/receptionist.png" %}">
+  </head>
+  <body class="bg-gray-200 " id='about'>
+    {% comment %} nav start {% endcomment %}
+    <div class='lg:w-11/12 mx-auto'>
+      <nav 
+        class="bg-white md:rounded-full lg:rounded-full justify-center items-center py-3 shadow-xl md:mx-6 lg:mx-6 mt-4">
+        <div class="flex justify-between mx-3 items-center text-lg">
+          <ul>
+            <li><a href="#"><img class='size-10 rounded-full ring md:mx-1' src="{% static "image/Hasan.JPG" %}" alt="Logo"></a></li>
+          </ul>
+          <ul class="flex space-x-1 sm:space-x-8 lg:space-x-12 text-sm sm:text-lg md:text-lg lg:text-lg">
+            <li><a class='hover:underline mx-0 md:mx-0 lg:mx-0' href="#home">Home</a></li>
+            <li><a class='hover:underline mx-2 md:mx-0 lg:mx-0' href="#skill">Skill</a></li>
+            <li><a class='hover:underline mx-2 md:mx-0 lg:mx-0' href="#project">Project</a></li>
+            <li><a class='hover:underline mx-0 md:mx-0 lg:mx-0' href="#experience">Experience</a></li>
+            {% comment %} <li class='hidden sm:hidden-false'><a href="#">Blog</a></li> {% endcomment %}
+          </ul>
+          <ul class="flex space-x-2 md:mx-4 lg:mx-4 sm:mx-2">
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    {% comment %} nav end {% endcomment %} 
+
+
+     {% block content %}{% endblock content %} 
+     
+     
+     {% comment %} footer start {% endcomment %}
+    <footer class='lg:w-11/12 mx-auto'>
+        <div class='bg-gray-800 flex flex-col justify-center items-center lg:rounded-t-md'>
+          <ul class='flex space-x-4 items-center h-40'>
+            {% for data in data %}
+            <li><a href="{{ data.url }}" target="_blank"><img class='size-8' src="{{ data.logo.url }}" alt=""></a></li>
+            {% comment %} <li><a href="#" target="_blank"><img class='size-8 bg-white rounded-lg' src="{% static "image/github.png" %}" alt=""></a></li>
+            <li><a href="#" target="_blank"><img class='size-8' src="{% static "image/whatsapp.png" %}" alt=""></a></li>
+            <li><a href="#" target="_blank"><img class='size-8' src="{% static "image/instagram.png" %}" alt=""></a></li>
+            <li><a href="#" target="_blank"><img class='size-8' src="{% static "image/linkedin.png" %}" alt=""></a></li> {% endcomment %}
+            {% endfor %}
+          </ul>
+          <ul class='flex justify-center items-center text-white space-x-4 -mt-10 mb-12'>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Skill</a></li>
+            <li><a href="#">Project</a></li>
+            <li><a href="#">Experience</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class='bg-gray-700 text-white text-sm text-center py-1'>© 2024 Abdus Salam Hasan. All rights reserved.</div>
+    </footer>
+    {% comment %} footerend {% endcomment %}
+  </body>
+</html>

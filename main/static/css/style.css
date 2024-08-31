@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'Overlock';
+    src: url("{% static 'fonts/overlock/Overlock-Regular.ttf' %}") format('truetype'),
+         url("{% static 'fonts/overlock/Overlock-Bold.ttf' %}") format('truetype'),
+         url("{% static 'fonts/overlock/Overlock-Italic.ttf' %}") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Overlock', sans-serif;
+    scroll-behavior: smooth;
+    
+}
+
+html {
+    scroll-behavior: smooth;
+}
