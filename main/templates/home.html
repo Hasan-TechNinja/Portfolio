@@ -7,31 +7,31 @@
     {% comment %} <h1 class='text-2xl font-bold mx-2 my-3 md:mx-14 lg:mx-16 md:mt-10 lg:mt-10 text-left'>About</h1> {% endcomment %}
 </div class=''>
     <div class="mb-10 lg:w-11/12 xl:w-11/12 mx-auto mt-5">
-        <div id='home' class='m-2 md:flex lg:flex sm:justify-center sm:mt-2 md:mt-2 shadow-sm sm:shadow-md md:shadow-lg lg:shadow-lg rounded-md bg-gray-100 py-8'>
+        <div id='home' class='m-2 md:flex lg:flex sm:justify-center lg:justify-evenly lg:items-center sm:mt-2 md:mt-2 shadow-sm sm:shadow-md md:shadow-lg lg:shadow-lg rounded-md bg-gray-100 py-8'>
             <div class='md:w-1/2 lg:w-1/2 sm:mx-5 lg:mx-5'>
                 <div class='text-2xl font-bold flex justify-center items-center space-x-2 sm:justify-normal lg:justify-normal'>
                     
-                    <h2 class='text-green-600'>Abdus Salam</h2>
-                    <h2 class='text-yellow-500'>Hasan</h2>
+                    <h2 class='text-green-600'>{{about.first_name}}</h2>
+                    <h2 class='text-yellow-500'>{{about.last_name}}</h2>
                 </div>
-                <div class='text-center sm:justify-normal lg:justify-normal flex font'><i>Final-year Computer Science and Engineering Student</i></div>
+                <div class='text-center sm:justify-normal lg:justify-normal flex font'><i>{{about.education}}</i></div>
                 <hr class='my-1 sm:my-3 lg:my-3'>
                 <div class='mx-1'>
-                    I am Abdus Salam Hasan, a final-year Computer Science and Engineering student with expertise in backend web development. Driven by a passion for solving complex problems, I have built many dynamic web application. I aspire to become a better software developer, eager to continue learning and contributing to impactful projects.
+                    {{about.description}}
                 </div>
                 <div class='flex justify-center md:justify-start lg:justify-start'>
-                    <button class='bg-blue-500 hover:bg-blue-600 text-white rounded-full p-3 font-sans font-bold text-sm my-4'><a href="{% static "file/Profile.pdf" %}" target="_blank">Download CV</a></button>
+                    <button class='bg-blue-500 hover:bg-blue-600 text-white rounded-full p-3 font-sans font-bold text-sm my-4'><a href="{{about.CV.url}}" target="_blank">Download CV</a></button>
                 </div>
             </div>
 
-            <div class='flex justify-center my-3'><img class='rounded-full size-52 md:size-60 lg:size-80 sm:rounded-3xl lg:rounded-3xl ring sm:ring md:aria-hidden:ring' src="{% static "image/Hasan.JPG" %}" alt=""></div>
+            <div class='flex justify-center my-3'><img class='rounded-full size-52 md:size-60 lg:size-80 sm:rounded-3xl lg:rounded-3xl ring sm:ring md:aria-hidden:ring' src="{{about.image.url}}" alt=""></div>
         </div>
     </div>
 {% comment %} home section end {% endcomment %}
 
 {% comment %} about section start {% endcomment %}
-<div class='lg:w-11/12 xl:w-11/12 mx-auto'>
-    <h1 class='text-2xl font-bold mx-2 -mb-3 mt-3 md:mx-14 lg:mx-16' id='skill'>Skill's</h1>
+<div id='skill' class='lg:w-11/12 xl:w-11/12 mx-auto'>
+    {% comment %} <h1 class='text-2xl font-bold mx-2 -mb-3 mt-3 md:mx-14 lg:mx-16'>Skill's</h1> {% endcomment %}
 </div>
 <div class='mx-2 md:mx-6 shadow-lg mt-6 rounded-lg bg-gray-100 mb-10 lg:w-11/12 xl:w-11/12 lg:mx-auto xl:mx-auto'>
     <hr>
@@ -81,7 +81,7 @@
 
 {% comment %} project start here {% endcomment %}
 <div id='project' class="lg:w-11/12 xl:w-11/12 lg:mx-auto xl:mx-auto">
-    <h1 class='text-2xl font-bold mx-2 my-3 md:mx-14 lg:mx-16 text-left'>Projects</h1>
+    {% comment %} <h1 class='text-2xl font-bold mx-2 my-3 md:mx-14 lg:mx-16 text-left'>Projects</h1> {% endcomment %}
 </div>
 
 <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:mx-6 lg:w-11/12 xl:w-11/12 lg:mx-auto xl:mx-auto'>
@@ -170,19 +170,20 @@
 
 {% comment %} Experience start {% endcomment %}
 
+{% if experience %}
 <div id='experience' class="w-full lg:w-11/12 xl:w-11/12 mt-10 lg:mx-auto xl:mx-auto">
-    <h1 class='text-2xl font-bold mx-2 my-3 md:mx-14 lg:mx-16 text-left'>Experience</h1>
+    {% comment %} <h1 class='text-2xl font-bold mx-2 my-3 md:mx-14 lg:mx-16 text-left'>Experience</h1> {% endcomment %}
 </div>
 
 <div class='mb-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mx-4 md:mx-6 lg:w-11/12 xl:w-11/12 lg:mx-auto xl:mx-auto'>
 
-    {% if experience %}
+    
     {% for data in experience %}
     <div class="relative flex flex-col text-gray-700 bg-gray-100 shadow-md bg-clip-border rounded-xl w-full"> 
         <div class="relative mx-4 my-4 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
             <div class='flex flex-col md:flex-row justify-around items-center'>
                 <img class='w-14 h-14 m-2' src="{{data.company_logo.url}}" alt="Company Logo">
-                <h2 class='text-black font-bold text-lg'>Company Name</h2>
+                <h2 class='text-black font-bold text-lg'>{{ data.company_name }}</h2>
             </div>
             <hr class='border-1 border-gray-800 justify-center my-2'>
             <div class='text-black mt-2 mx-1'>
@@ -210,119 +211,24 @@
         </div>
     </div>
     {% endfor %}
-    {% endif %}
 
-    <div class="relative flex flex-col text-gray-700 bg-gray-100 shadow-md bg-clip-border rounded-xl w-full"> 
-        <div class="relative mx-4 my-4 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
-            <div class='flex flex-col md:flex-row justify-around items-center'>
-                <img class='w-14 h-14 m-2' src="{% static 'image/python.png' %}" alt="Company Logo">
-                <h2 class='text-black font-bold text-lg'>Company Name</h2>
-            </div>
-            <hr class='border-1 border-gray-800 justify-center my-2'>
-            <div class='text-black mt-2 mx-1'>
-                <p>I have been working as a Python Backend Developer at Company Name for a year now. My main responsibility is to work in the Python team and help them provide better service.</p>
-            </div>
-            <div>
-                <ul class='text-black mt-4 mx-4'>
-                    <li class='my-2'>Job Title: Python Developer</li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Location: Dhaka, Bangladesh</li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Start date: </li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>End date: </li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Is Current: </li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Experience: </li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Technologies: </li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Website: </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+</div>  
 
-    <div class="relative flex flex-col text-gray-700 bg-gray-100 shadow-md bg-clip-border rounded-xl w-full"> 
-        <div class="relative mx-4 my-4 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
-            <div class='flex flex-col md:flex-row justify-around items-center'>
-                <img class='w-14 h-14 m-2' src="{% static 'image/python.png' %}" alt="Company Logo">
-                <h2 class='text-black font-bold text-lg'>Company Name</h2>
-            </div>
-            <hr class='border-1 border-gray-800 justify-center my-2'>
-            <div class='text-black mt-2 mx-1'>
-                <p>I have been working as a Python Backend Developer at Company Name for a year now. My main responsibility is to work in the Python team and help them provide better service.</p>
-            </div>
-            <div>
-                <ul class='text-black mt-4 mx-4'>
-                    <li class='my-2'>Job Title: Python Developer</li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Location: Dhaka, Bangladesh</li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Start date: </li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>End date: </li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Is Current: </li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Experience: </li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Technologies: </li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Website: </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="relative flex flex-col text-gray-700 bg-gray-100 shadow-md bg-clip-border rounded-xl w-full"> 
-        <div class="relative mx-4 my-4 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
-            <div class='flex flex-col md:flex-row justify-around items-center'>
-                <img class='w-14 h-14 m-2' src="{% static 'image/python.png' %}" alt="Company Logo">
-                <h2 class='text-black font-bold text-lg'>Company Name</h2>
-            </div>
-            <hr class='border-1 border-gray-800 justify-center my-2'>
-            <div class='text-black mt-2 mx-1'>
-                <p>I have been working as a Python Backend Developer at Company Name for a year now. My main responsibility is to work in the Python team and help them provide better service.</p>
-            </div>
-            <div>
-                <ul class='text-black mt-4 mx-4'>
-                    <li class='my-2'>Job Title: Python Developer</li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Location: Dhaka, Bangladesh</li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Start date: </li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>End date: </li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Is Current: </li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Experience: </li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Technologies: </li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Website: </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    
-    
-</div>
+{% endif %}
 
 
 {% comment %} Experience end {% endcomment %}
 
 
 {% comment %} contact start {% endcomment %}
-<div id='contact' class='lg:w-11/12 xl:w-11/12 lg:mx-auto xl:mx-auto'>
-    <h1 class='text-2xl font-bold mx-2 my-3 md:mx-14 lg:mx-16 md:mt-10 lg:mt-10 text-left'>Contact</h1>
+<div id='contact' class='lg:w-11/12 xl:w-11/12 lg:mx-auto xl:mx-auto my-3 lg:mt-10 xl:mt-10'>
+    {% comment %} <h1 class='text-2xl font-bold mx-2 my-3 md:mx-14 lg:mx-16 md:mt-10 lg:mt-10 text-left'>Contact</h1> {% endcomment %}
 </div>
 <div class="mb-10">
     <div id='home' class='m-2 md:mx-6 lg:mx-6 md:flex lg:flex sm:justify-center sm:mt-2 md:mt-2 shadow-sm sm:shadow-md md:shadow-lg lg:shadow-lg rounded-md bg-gray-100 py-8 lg:w-11/12 xl:w-11/12 lg:mx-auto xl:mx-auto'>
         <div class='sm:mx-5 lg:mx-5 w-full md:w-3/4 lg:w-1/2'>
+            <p class='text-black text-center text-lg'>You can contact me at +8801739989028 (Whatsapp & Telegram)</p>
+            <hr class='border-1 border-gray-400 mb-4 mt-1'>
             <form action="" method='POST' class='mx-1'>
                 {% csrf_token %}
                 {% for form in form %}

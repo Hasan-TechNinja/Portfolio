@@ -37,3 +37,16 @@ class Experience(models.Model):
 
     def __str__(self):
         return f"{self.job_title} at {self.company_name}"
+    
+
+    
+class About(models.Model):
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+    education = models.CharField(max_length=400)
+    description = models.TextField()
+    CV = models.FileField(upload_to='cv')
+    image = models.ImageField(upload_to='profile')
+
+def __str__(self):
+    return f"{self.first_name} {self.last_name} information"
