@@ -3,7 +3,7 @@ from .models import Contact, Footer
 
 # Register your models here.
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ('id', 'email', 'message')
+    list_display = ('id', 'name', 'email', 'message')
     
 admin.site.register(Contact, ContactAdmin)
 
