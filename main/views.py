@@ -2,8 +2,9 @@ from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.conf import settings
 from .forms import ContactModelForm
-from .models import Contact, Footer
+from .models import Contact, Footer, Experience
 from django.contrib import messages
+from datetime import date
 
 # Create your views here.
 
@@ -54,10 +55,14 @@ def HomeView(request):
         form = ContactModelForm()
         
     data = Footer.objects.all()
+    experience = Experience.objects.all() 
+    today = date.today()
+    print("Today's Date:", today)
 
     context = {
         'form':form,
         'data':data,
+        'experience':experience
     }
     
     return render(request, 'home.html', context)

@@ -86,6 +86,7 @@
 
 <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:mx-6 lg:w-11/12 xl:w-11/12 lg:mx-auto xl:mx-auto'>
     <div class="relative flex flex-col text-gray-700 bg-gray-100 shadow-md bg-clip-border rounded-xl w-full">
+
         <div class="relative h-56 mx-4 mt-4 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
             <img src="{% static "image/ogani.png" %}" alt="card-image" />
         </div>
@@ -167,6 +168,153 @@
 
 {% comment %} project end here {% endcomment %}
 
+{% comment %} Experience start {% endcomment %}
+
+<div id='experience' class="w-full lg:w-11/12 xl:w-11/12 mt-10 lg:mx-auto xl:mx-auto">
+    <h1 class='text-2xl font-bold mx-2 my-3 md:mx-14 lg:mx-16 text-left'>Experience</h1>
+</div>
+
+<div class='mb-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mx-4 md:mx-6 lg:w-11/12 xl:w-11/12 lg:mx-auto xl:mx-auto'>
+
+    {% if experience %}
+    {% for data in experience %}
+    <div class="relative flex flex-col text-gray-700 bg-gray-100 shadow-md bg-clip-border rounded-xl w-full"> 
+        <div class="relative mx-4 my-4 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
+            <div class='flex flex-col md:flex-row justify-around items-center'>
+                <img class='w-14 h-14 m-2' src="{{data.company_logo.url}}" alt="Company Logo">
+                <h2 class='text-black font-bold text-lg'>Company Name</h2>
+            </div>
+            <hr class='border-1 border-gray-800 justify-center my-2'>
+            <div class='text-black mt-2 mx-1'>
+                <p>{{data.description}}.</p>
+            </div>
+            <div>
+                <ul class='text-black mt-4 mx-4'>
+                    <li class='my-2'>Job Title: {{data.job_title}}</li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>Location: {{data.location}}</li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>Start date: {{data.start_date}}</li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>End date: {{data.end_date}}</li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>Is Current: {{data.is_current}}</li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>Experience: </li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>Technologies: {{data.technologies}}</li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2 '>Website: <a class='text-blue-600 hover:underline' href="{{data.company_website}}" target='_blank'>Click me</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <div class="relative flex flex-col text-gray-700 bg-gray-100 shadow-md bg-clip-border rounded-xl w-full"> 
+        <div class="relative mx-4 my-4 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
+            <div class='flex flex-col md:flex-row justify-around items-center'>
+                <img class='w-14 h-14 m-2' src="{% static 'image/python.png' %}" alt="Company Logo">
+                <h2 class='text-black font-bold text-lg'>Company Name</h2>
+            </div>
+            <hr class='border-1 border-gray-800 justify-center my-2'>
+            <div class='text-black mt-2 mx-1'>
+                <p>I have been working as a Python Backend Developer at Company Name for a year now. My main responsibility is to work in the Python team and help them provide better service.</p>
+            </div>
+            <div>
+                <ul class='text-black mt-4 mx-4'>
+                    <li class='my-2'>Job Title: Python Developer</li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>Location: Dhaka, Bangladesh</li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>Start date: </li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>End date: </li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>Is Current: </li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>Experience: </li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>Technologies: </li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>Website: </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="relative flex flex-col text-gray-700 bg-gray-100 shadow-md bg-clip-border rounded-xl w-full"> 
+        <div class="relative mx-4 my-4 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
+            <div class='flex flex-col md:flex-row justify-around items-center'>
+                <img class='w-14 h-14 m-2' src="{% static 'image/python.png' %}" alt="Company Logo">
+                <h2 class='text-black font-bold text-lg'>Company Name</h2>
+            </div>
+            <hr class='border-1 border-gray-800 justify-center my-2'>
+            <div class='text-black mt-2 mx-1'>
+                <p>I have been working as a Python Backend Developer at Company Name for a year now. My main responsibility is to work in the Python team and help them provide better service.</p>
+            </div>
+            <div>
+                <ul class='text-black mt-4 mx-4'>
+                    <li class='my-2'>Job Title: Python Developer</li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>Location: Dhaka, Bangladesh</li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>Start date: </li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>End date: </li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>Is Current: </li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>Experience: </li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>Technologies: </li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>Website: </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="relative flex flex-col text-gray-700 bg-gray-100 shadow-md bg-clip-border rounded-xl w-full"> 
+        <div class="relative mx-4 my-4 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
+            <div class='flex flex-col md:flex-row justify-around items-center'>
+                <img class='w-14 h-14 m-2' src="{% static 'image/python.png' %}" alt="Company Logo">
+                <h2 class='text-black font-bold text-lg'>Company Name</h2>
+            </div>
+            <hr class='border-1 border-gray-800 justify-center my-2'>
+            <div class='text-black mt-2 mx-1'>
+                <p>I have been working as a Python Backend Developer at Company Name for a year now. My main responsibility is to work in the Python team and help them provide better service.</p>
+            </div>
+            <div>
+                <ul class='text-black mt-4 mx-4'>
+                    <li class='my-2'>Job Title: Python Developer</li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>Location: Dhaka, Bangladesh</li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>Start date: </li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>End date: </li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>Is Current: </li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>Experience: </li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>Technologies: </li>
+                    <hr class='border-1 border-gray-400'>
+                    <li class='my-2'>Website: </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+</div>
+
+
+{% comment %} Experience end {% endcomment %}
+
 
 {% comment %} contact start {% endcomment %}
 <div id='contact' class='lg:w-11/12 xl:w-11/12 lg:mx-auto xl:mx-auto'>
@@ -200,8 +348,6 @@
         </div>
     </div>
 </div>
-
-
 {% comment %} contact end {% endcomment %}
 
 </div>
