@@ -38,21 +38,18 @@
     <div class='mx-2 flex flex-col md:flex md:flex-row lg:flex lg:flex-row md:justify-around md:items-center lg:justify-around lg:items-center lg:mx-32 py-8 '>
         
         <div class='md:w-1/2 lg:w-1/2 lg:text-center md:text-center xl:justify-center md:mx-6 lg:mx-6 xl:mx-6'>
-            <ul class='flex justify-center'>
-                <li class='size-14 m-5 md:size-20 lg:size-20 md:mx-8 lg:mx-12'><img src="{% static "image/python.png" %}" alt=""></li>
-                <li class='size-14 m-5 md:size-20 lg:size-20 md:mx-8 lg:mx-12'><img src="{% static "image/django.png" %}" alt=""></li>
-                <li class='size-14 m-5 md:size-20 lg:size-20 md:mx-8 lg:mx-12'><img src="{% static "image/postgre.png" %}" alt=""></li>
-            </ul>
-            <ul class='flex justify-center'>
-                <li class='size-14 m-5 md:size-20 lg:size-20 md:mx-8 lg:mx-12'><img src="{% static "image/linux.png" %}" alt=""></li>
-                <li class='size-14 m-5 md:size-20 lg:size-20 md:mx-8 lg:mx-12'><img src="{% static "image/git.png" %}" alt=""></li>
-                <li class='size-14 m-5 md:size-20 lg:size-20 md:mx-8 lg:mx-12'><img src="{% static "image/terminal.png" %}" alt=""></li>
-            </ul>
-            <ul class='flex justify-center'>
-                <li class='size-14 m-5 md:size-20 lg:size-20 md:mx-8 lg:mx-12'><img src="{% static "image/PyCharm.webp" %}" alt=""></li>
-                <li class='size-14 m-5 md:size-20 lg:size-20 md:mx-8 lg:mx-12'><img src="{% static "image/vscode.png" %}" alt=""></li>
-                <li class='size-14 m-5 md:size-20 lg:size-20 md:mx-8 lg:mx-12'><img src="{% static "image/tailwind.svg" %}" alt=""></li>
-            </ul>
+            {% for img in skimg %}
+                {% if forloop.first or forloop.counter0|divisibleby:3 %}
+                    <ul class='flex justify-center'>
+                        {% endif %}
+                            <li class='size-14 m-5 md:size-20 lg:size-20 md:mx-8 lg:mx-12 flex w-1/3'>
+                                <img src="{{ img.image.url }}" alt="">
+                            </li>
+                        {% if forloop.counter|divisibleby:3 or forloop.last %}
+                    </ul>
+                {% endif %}
+            {% endfor %}
+            
         </div>
         <div class="md:h-96 lg:h-80 md:w-px bg-gray-400 md:mx-4"></div>
             <div class='md:w-1/2 lg:w-1/2 py-2 flex justify-center items-center'>

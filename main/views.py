@@ -2,7 +2,7 @@ from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.conf import settings
 from .forms import ContactModelForm
-from .models import Contact, Footer, Experience, About, Skill
+from .models import Contact, Footer, Experience, About, Skill, SkillImage
 from django.contrib import messages
 from datetime import date
 
@@ -29,6 +29,7 @@ def HomeView(request):
         
     about = About.objects.last()
     skill = Skill.objects.last()
+    SkillImages = SkillImage.objects.all()
     experience = Experience.objects.all() 
     data = Footer.objects.all()
     today = date.today()
@@ -40,6 +41,7 @@ def HomeView(request):
         'form':form,
         'data':data,
         'skill':skill,
+        'skimg': SkillImages,
         'experience':experience,
         'year':year
     }
