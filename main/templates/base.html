@@ -40,25 +40,44 @@
      
      
      {% comment %} footer start {% endcomment %}
-    <footer class='lg:w-11/12 mx-auto'>
-        <div class='bg-gray-800 flex flex-col justify-center items-center lg:rounded-t-md'>
-          <ul class='flex space-x-4 items-center h-40'>
-            {% for data in data %}
-            <li><a href="{{ data.url }}" target="_blank"><img class='size-8' src="{{ data.logo.url }}" alt=""></a></li>
-            {% endfor %}
-          </ul>
-          <ul class='flex justify-center items-center text-white space-x-4 -mt-10 mb-12'>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skill">Skill's</a></li>
-            <li><a href="#project">Projects</a></li>
-            {% if experience %}
-            <li><a href="#experience">Experience</a></li>
-            {% endif %}
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class='bg-gray-700 text-white text-sm text-center py-1'>© 2024 Abdus Salam Hasan. All rights reserved.</div>
-    </footer>
+     <footer class="lg:w-11/12 mx-auto mt-4">
+      <div class="bg-gray-800 flex flex-col justify-center md:justify-evenly items-center md:flex-row md:items-center p-4 lg:rounded-t-md">
+          <!-- Contact Information -->
+          <div class="text-white text-sm text-center md:text-start lg:text-start mb-4 md:mb-0">
+              <p>{{about.first_name}} {{about.last_name}}</p>
+              <p>hasantechninja@gmail.com</p>
+              <p>+8801739989028</p>
+          </div>
+  
+          <!-- Social Media Links -->
+          <div class="flex space-x-4 md:space-x-8 lg:space-x-12 mb-4 md:mb-0">
+              {% for data in data %}
+              <a href="{{ data.url }}" target="_blank">
+                  <img class="h-8 w-8 md:h-8 md:w-8" src="{{ data.logo.url }}" alt="">
+              </a>
+              {% endfor %}
+          </div>
+  
+          <!-- Navigation Links -->
+          <div class="text-white text-sm my-2">
+              <ul class="flex flex-row space-x-3 md:flex-col md:space-x-0 md:space-y-2">
+                  <li><a href="#about" class="hover:text-gray-400">About</a></li>
+                  <li><a href="#skill" class="hover:text-gray-400">Skills</a></li>
+                  <li><a href="#project" class="hover:text-gray-400">Projects</a></li>
+                  {% if experience %}
+                  <li><a href="#experience" class="hover:text-gray-400">Experience</a></li>
+                  {% endif %}
+                  <li><a href="#contact" class="hover:text-gray-400">Contact</a></li>
+              </ul>
+          </div>
+      </div>
+  
+      <!-- Copyright Notice -->
+      <div class="bg-gray-700 text-white text-sm text-center py-2">
+          © {{year}} {{about.first_name}} {{about.last_name}}. All rights reserved.
+      </div>
+  </footer>
+  
     {% comment %} footerend {% endcomment %}
   </body>
 </html>

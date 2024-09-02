@@ -11,16 +11,19 @@
             <div class='md:w-1/2 lg:w-1/2 sm:mx-5 lg:mx-5'>
                 <div class='text-2xl font-bold flex justify-center items-center space-x-2 sm:justify-normal lg:justify-normal'>
                     
-                    <h2 class='text-green-600'>{{about.first_name}}</h2>
-                    <h2 class='text-yellow-500'>{{about.last_name}}</h2>
+                    <h2 class='text-blue-700'>{{about.first_name}}</h2>
+                    <h2 class='text-teal-600'>{{about.last_name}}</h2>
                 </div>
                 <div class='text-center sm:justify-normal lg:justify-normal flex font'><i>{{about.education}}</i></div>
                 <hr class='my-1 sm:my-3 lg:my-3'>
-                <div class='mx-1'>
+                <div class='mx-1 text-sm sm:text-base md:text-lg lg:text-lg'>
                     {{about.description}}
                 </div>
                 <div class='flex justify-center md:justify-start lg:justify-start'>
-                    <button class='bg-blue-500 hover:bg-blue-600 text-white rounded-full p-3 font-sans font-bold text-sm my-4'><a href="{{about.CV.url}}" target="_blank">Download CV</a></button>
+                    <button class='mt-2 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-2 sm:p-3 font-sans font-bold text-xs sm:text-sm my-2 sm:my-4'>
+                        <a href="{{about.CV.url}}" target="_blank" class='block'>Download CV</a>
+                    </button>
+                    
                 </div>
             </div>
 
@@ -37,19 +40,19 @@
     <hr>
     <div class='mx-2 flex flex-col md:flex md:flex-row lg:flex lg:flex-row md:justify-around md:items-center lg:justify-around lg:items-center lg:mx-32 py-8 '>
         
-        <div class='md:w-1/2 lg:w-1/2 lg:text-center md:text-center xl:justify-center md:mx-6 lg:mx-6 xl:mx-6'>
+        <div class='md:w-1/2 lg:w-1/2 sm:text-center lg:text-center md:text-center xl:justify-center md:mx-6 lg:mx-6 xl:mx-6'>
             {% for img in skimg %}
                 {% if forloop.first or forloop.counter0|divisibleby:3 %}
                     <ul class='flex justify-center'>
                         {% endif %}
-                            <li class='size-14 m-5 md:size-20 lg:size-20 md:mx-8 lg:mx-12 flex w-1/3'>
-                                <img src="{{ img.image.url }}" alt="">
+                            <li class='size-12 m-5 sm:size-16 md:size-20 lg:size-20 sm:mx-8 md:mx-8 lg:mx-12 flex w-1/3'>
+                                <img class='flex justify-center' src="{{ img.image.url }}" alt="">
                             </li>
                         {% if forloop.counter|divisibleby:3 or forloop.last %}
                     </ul>
                 {% endif %}
             {% endfor %}
-            
+
         </div>
         <div class="md:h-96 lg:h-80 md:w-px bg-gray-400 md:mx-4"></div>
             <div class='md:w-1/2 lg:w-1/2 py-2 flex justify-center items-center'>
@@ -262,7 +265,7 @@
                             {{form}}
                         </div>
                     </div>
-                {% endfor %}
+                {% endfor %}    
                 <button class='bg-gray-900 hover:shadow-lg text-white p-2 rounded mt-2 w-full sm:w-auto'>Submit</button>
                 {% if messages %}
                 {% for message in messages %}

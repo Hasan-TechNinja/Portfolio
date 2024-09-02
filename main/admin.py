@@ -19,7 +19,7 @@ class ExperienceAdmin(admin.ModelAdmin):
 admin.site.register(Experience, ExperienceAdmin)
 
 class AboutAdmin(admin.ModelAdmin):
-    list_display = ('id', 'first_name', 'last_name', 'education', 'description', 'CV', 'image')
+    list_display = ('id', 'first_name', 'last_name', 'email', 'phone', 'education', 'description', 'CV', 'image')
 
 admin.site.register(About, AboutAdmin)
 

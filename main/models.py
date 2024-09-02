@@ -43,6 +43,8 @@ class Experience(models.Model):
 class About(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
+    email = models.EmailField(max_length=200, blank=True, null= True)
+    phone = models.CharField(max_length=100, blank=True, null=True)
     education = models.CharField(max_length=400)
     description = models.TextField()
     CV = models.FileField(upload_to='cv')
