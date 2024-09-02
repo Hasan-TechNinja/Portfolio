@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 
 # Create your models here.
 
@@ -29,11 +30,22 @@ class Experience(models.Model):
     description = models.TextField()
     technologies = models.CharField(max_length=200, help_text="Comma-separated list of technologies")
     company_logo = models.ImageField(upload_to='company_logos/', null=True, blank=True)
-    company_website = models.URLField(default="#", null=True, blank=True)
+    company_website = models.CharField(max_length=500, default="#")
 
     def save(self, *args, **kwargs):
         self.technologies = ', '.join([tech.strip() for tech in self.technologies.split(',') if tech.strip()])
         super().save(*args, **kwargs)
+
+    def calculate_experience(self):
+        end_date = self.end_date if self.end_date else date.today()
+        duration = end_date - self.start_date
+        return duration.days
+
+    def calculate_experience_years(self):
+        days = self.calculate_experience()
+        years = days // 365
+        remaining_days = days % 365
+        return years, remaining_days
 
     def __str__(self):
         return f"{self.job_title} at {self.company_name}"
@@ -75,3 +87,24 @@ class SkillImage(models.Model):
 
     def __str__(self):
         return f"{self.image} logo"
+    
+
+class Projects(models.Model):
+    name = models.CharField(max_length=200)
+    start = models.DateField(blank=True, null=True)
+    end = models.DateField(blank=True, null=True)
+    description = models.TextField()
+    image = models.ImageField(upload_to='projects')
+    github = models.URLField(blank=True, null=True)
+    live = models.URLField(blank=True, null=True)
+
+    def project_duration(self):
+        if self.start and self.end:
+            return (self.end - self.start).days
+        return None
+
+    def is_ongoing(self):
+        return self.end is None
+
+    def __str__(self):
+        return self.name

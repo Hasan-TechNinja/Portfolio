@@ -194,40 +194,41 @@
 
 {% if experience %}
 <div id='experience' class="w-full lg:w-11/12 xl:w-11/12 mt-10 lg:mx-auto xl:mx-auto">
-    {% comment %} <h1 class='text-2xl font-bold mx-2 my-3 md:mx-14 lg:mx-16 text-left'>Experience</h1> {% endcomment %}
+    <h1 class='text-2xl font-bold mx-2 my-3 md:mx-14 lg:mx-16 text-left'>Experience</h1>
 </div>
 
 <div class='mb-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mx-4 md:mx-6 lg:w-11/12 xl:w-11/12 lg:mx-auto xl:mx-auto'>
 
-    
-    {% for data in experience %}
+    {% for detail in experience_details %}
     <div class="relative flex flex-col text-gray-700 bg-gray-100 shadow-md bg-clip-border rounded-xl w-full"> 
         <div class="relative mx-4 my-4 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
             <div class='flex flex-col md:flex-row justify-around items-center'>
-                <img class='w-14 h-14 m-2' src="{{data.company_logo.url}}" alt="Company Logo">
-                <h2 class='text-black font-bold text-lg'>{{ data.company_name }}</h2>
+                {% if detail.experience.company_logo %}
+                <img class='w-14 h-14 m-2' src="{{ detail.experience.company_logo.url }}" alt="Company Logo">
+                {% endif %}
+                <h2 class='text-black font-bold text-lg'>{{ detail.experience.company_name }}</h2>
             </div>
             <hr class='border-1 border-gray-800 justify-center my-2'>
             <div class='text-black mt-2 mx-1'>
-                <p>{{data.description}}.</p>
+                <p>{{ detail.experience.description }}.</p>
             </div>
             <div>
                 <ul class='text-black mt-4 mx-4'>
-                    <li class='my-2'>Job Title: {{data.job_title}}</li>
+                    <li class='my-2'>Job Title: {{ detail.experience.job_title }}</li>
                     <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Location: {{data.location}}</li>
+                    <li class='my-2'>Location: {{ detail.experience.location }}</li>
                     <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Start date: {{data.start_date}}</li>
+                    <li class='my-2'>Start date: {{ detail.experience.start_date }}</li>
                     <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>End date: {{data.end_date}}</li>
+                    <li class='my-2'>End date: {{ detail.experience.end_date|default:"Present" }}</li>
                     <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Is Current: {{data.is_current}}</li>
+                    <li class='my-2'>Is Current: {{ detail.experience.is_current }}</li>
                     <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Experience: </li>
+                    <li class='my-2'>Experience: {{ detail.years }} years and {{ detail.remaining_days }} days</li>
                     <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Technologies: {{data.technologies}}</li>
+                    <li class='my-2'>Technologies: {{ detail.experience.technologies }}</li>
                     <hr class='border-1 border-gray-400'>
-                    <li class='my-2 '>Website: <a class='text-blue-600 hover:underline' href="{{data.company_website}}" target='_blank'>Click me</a></li>
+                    <li class='my-2'>Website: <a class='text-blue-600 hover:underline' href="{{ detail.experience.company_website }}" target='_blank'>Click me</a></li>
                 </ul>
             </div>
         </div>
@@ -235,7 +236,6 @@
     {% endfor %}
 
 </div>  
-
 {% endif %}
 
 

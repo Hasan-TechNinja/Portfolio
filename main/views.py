@@ -30,11 +30,21 @@ def HomeView(request):
     about = About.objects.last()
     skill = Skill.objects.last()
     SkillImages = SkillImage.objects.all()
-    experience = Experience.objects.all() 
     data = Footer.objects.all()
     today = date.today()
     year = today.year
+    experiences = Experience.objects.all() 
     
+    experience_details = []
+    for experience in experiences:
+        days = experience.calculate_experience()
+        years, remaining_days = experience.calculate_experience_years()
+        experience_details.append({
+            'experience': experience,
+            'days': days,
+            'years': years,
+            'remaining_days': remaining_days,
+        })
 
     context = {
         'about':about,
@@ -43,7 +53,8 @@ def HomeView(request):
         'skill':skill,
         'skimg': SkillImages,
         'experience':experience,
-        'year':year
+        'year':year, 
+        'experience_details':experience_details
     }
     
     return render(request, 'home.html', context)
