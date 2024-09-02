@@ -10,84 +10,86 @@
     <link class='rounded-full' rel="icon" type="image/x-icon" href="{{ about.image.url }}">
   </head>
   <body class="bg-gray-200 " id='about'>
-    {% comment %} nav start {% endcomment %}
-    <div class='lg:w-11/12 lg:mx-auto'>
-      <nav 
-        class="bg-white md:rounded-full lg:rounded-full justify-center items-center py-3 shadow-xl md:mx-4 lg:mx-4 mt-4">
-        <div class="flex justify-between mx-3 items-center text-lg">
-          <ul>
-            <li><a href="#"><img class='size-10 rounded-full ring md:mx-1' src="{{ about.image.url }}" alt="Logo"></a></li>
-          </ul>
-          <ul class="flex space-x-1 sm:space-x-8 lg:space-x-12 text-sm sm:text-lg md:text-lg lg:text-lg">
-            <li><a class='hover:text-[rgba(255,0,0,1.0)] mx-0 md:mx-0 lg:mx-0' href="#home">Home</a></li>
-            <li><a class='hover:text-[rgba(255,0,0,1.0)] mx-2 md:mx-0 lg:mx-0' href="#skill">Skill's</a></li>
-            <li><a class='hover:text-[rgba(255,0,0,1.0)] mx-2 md:mx-0 lg:mx-0' href="#project">Projects</a></li>
-            {% if experience %}
-            <li><a class='hover:underline mx-0 md:mx-0 lg:mx-0' href="#experience">Experience</a></li>
-            {% endif %}
-            {% comment %} <li class='hidden sm:hidden-false'><a href="#">Blog</a></li> {% endcomment %}
-          </ul>
-          <ul class="flex space-x-2 md:mx-2 lg:m2-4 sm:mx-2">
-            <li><a href="#contact"><img class='size-10' src="{% static "image/contact.png" %}" alt=""></a></li>
-          </ul>
-        </div>
-      </nav>
+{% comment %} nav start {% endcomment %}
+<div class='lg:w-11/12 lg:mx-auto fixed top-0 left-0 right-0 z-50'>
+  <nav class="bg-white md:rounded-full lg:rounded-full justify-center items-center py-3 shadow-xl md:mx-4 lg:mx-4 mt-4">
+    <div class="flex justify-between items-center mx-3 text-lg">
+      
+      <ul class="flex-shrink-0">
+        <li><a href="#home"><img class='w-10 h-10 rounded-full ring md:mx-1' src="{{ about.image.url }}" alt="Logo"></a></li>
+      </ul>
+      
+      <ul class="flex space-x-2 sm:space-x-8 lg:space-x-12 text-sm sm:text-lg md:text-lg lg:text-lg">
+        <li><a class='hover:text-red-500' href="#home">Home</a></li>
+        <li><a class='hover:text-red-500' href="#skill">Skill's</a></li>
+        <li><a class='hover:text-red-500' href="#project">Projects</a></li>
+        {% if experience %}
+        <li><a class='hover:text-red-500' href="#experience">Experience</a></li>
+        {% endif %}
+      </ul>
+      
+      <ul class="flex-shrink-0 space-x-2">
+        <li><a href="#contact"><img class='w-10 h-10' src="{% static "image/contact.png" %}" alt="Contact Icon"></a></li>
+      </ul>
+      
     </div>
-    {% comment %} nav end {% endcomment %} 
+  </nav>
+</div>
+{% comment %} nav end {% endcomment %}
+
 
 
      {% block content %}{% endblock content %} 
      
      
      {% comment %} footer start {% endcomment %}
-     <footer class="lg:w-11/12 mx-auto mt-4">
-      <div class="bg-gray-800 flex flex-col justify-center md:justify-evenly items-center md:flex-row md:items-center p-4 lg:rounded-t-md">
-          <!-- Contact Information -->
-          <div class="text-white text-sm text-center md:text-start lg:text-start mb-4 md:mb-0 space-y-2">
-            <div class='flex space-x-2'>
-              <img class='size-5' src="{% static "image/profileicon.png" %}" alt="">
-              <p>{{about.first_name}} {{about.last_name}}</p>
-            </div>
-            <div class='flex space-x-2'>
-              <img class='size-5' src="{% static "image/email.png" %}" alt="">
-              <p>{{about.email}}</p>
-            </div>
-            <div class='flex space-x-2'>
-              <img class='size-5' src="{% static "image/phone-call.png" %}" alt="">
-              <p>{{about.phone}}</p>
-            </div>
-          </div>
-  
-          <!-- Social Media Links -->
-          <div class="flex flex-wrap justify-center gap-2 mb-4 md:gap-8 lg:gap-12 mt-3">
-            {% for data in data %}
-            <a class='flex flex-col justify-center items-center basis-auto md:basis-auto lg:basis-auto' href="{{ data.url }}" target="_blank">
-                <img class="h-7 w-7 md:h-8 md:w-8 lg:h-8 lg:w-8" src="{{ data.logo.url }}" alt="">
-                <h2 class='text-white text-sm my-2'>{{data.title}}</h2>
-            </a>
-            {% endfor %}
+<footer class="lg:w-11/12 mx-auto mt-4">
+  <div class="bg-gray-800 flex flex-col justify-center md:justify-evenly items-center md:flex-row md:items-center p-4 lg:rounded-t-md">
+      <!-- Contact Information -->
+      <div class="text-white text-sm text-center md:text-start lg:text-start mb-4 md:mb-0 space-y-2">
+        <div class='flex space-x-2'>
+          <img class='size-5' src="{% static "image/profileicon.png" %}" alt="">
+          <p>{{about.first_name}} {{about.last_name}}</p>
         </div>
+        <div class='flex space-x-2'>
+          <img class='size-5' src="{% static "image/email.png" %}" alt="">
+          <p>{{about.email}}</p>
+        </div>
+        <div class='flex space-x-2'>
+          <img class='size-5' src="{% static "image/phone-call.png" %}" alt="">
+          <p>{{about.phone}}</p>
+        </div>
+      </div>
+  
+      <!-- Social Media Links -->
+      <div class="flex flex-wrap justify-center gap-2 mb-4 md:gap-4 lg:gap-6 mt-3">
+        {% for data in data %}
+        <a class='flex flex-col justify-center items-center basis-auto md:basis-auto lg:basis-auto' href="{{ data.url }}" target="_blank">
+            <img class="h-6 w-6 md:h-6 md:w-6 lg:h-7 lg:w-7" src="{{ data.logo.url }}" alt="">
+            <h2 class='text-white text-sm my-2'>{{data.title}}</h2>
+        </a>
+        {% endfor %}
+    </div>
            
           <!-- Navigation Links -->
-          <div class="text-white text-sm my-2">
-              <ul class="flex flex-row space-x-3 md:flex-col md:space-x-0 md:space-y-2">
-                  <li><a href="#about" class="hover:text-gray-400">About</a></li>
-                  <li><a href="#skill" class="hover:text-gray-400">Skills</a></li>
-                  <li><a href="#project" class="hover:text-gray-400">Projects</a></li>
-                  {% if experience %}
-                  <li><a href="#experience" class="hover:text-gray-400">Experience</a></li>
-                  {% endif %}
-                  <li><a href="#contact" class="hover:text-gray-400">Contact</a></li>
-              </ul>
-          </div>
-      </div>
+    <div class="text-white text-sm my-2">
+        <ul class="flex flex-row space-x-3 md:flex-col md:space-x-0 md:space-y-2">
+            <li><a href="#about" class="hover:text-gray-400">About</a></li>
+            <li><a href="#skill" class="hover:text-gray-400">Skills</a></li>
+            <li><a href="#project" class="hover:text-gray-400">Projects</a></li>
+            {% if experience %}
+            <li><a href="#experience" class="hover:text-gray-400">Experience</a></li>
+            {% endif %}
+            <li><a href="#contact" class="hover:text-gray-400">Contact</a></li>
+        </ul>
+    </div>
+  </div>
   
-      <!-- Copyright Notice -->
-      <div class="bg-gray-700 text-white text-sm text-center py-2">
-          © {{year}} {{about.first_name}} {{about.last_name}}. All rights reserved.
-      </div>
+<!-- Copyright Notice -->
+<div class="bg-gray-700 text-white text-sm text-center py-2">
+    © {{year}} {{about.first_name}} {{about.last_name}}. All rights reserved.
+</div>
   </footer>
-  
     {% comment %} footerend {% endcomment %}
   </body>
 </html>
