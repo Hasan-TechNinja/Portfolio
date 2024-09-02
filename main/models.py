@@ -50,3 +50,19 @@ class About(models.Model):
 
 def __str__(self):
     return f"{self.first_name} {self.last_name} information"
+
+
+class Skill(models.Model):
+    programming_languages = models.CharField(max_length=500, blank=True, null=True)
+    frameworks = models.CharField(max_length=500, blank=True, null=True)
+    tolse_and_platforms = models.CharField(max_length=500, blank=True, null=True)
+    databases = models.CharField(max_length=500, blank=True, null=True)
+    cloud_and_devops = models.CharField(max_length=500, blank=True, null=True)
+    soft_skills = models.CharField(max_length=500, blank=True, null=True)
+    operating_systems = models.CharField(max_length=500, blank=True, null=True)
+    version_control = models.CharField(max_length=500, blank=True, null=True)
+    testing = models.CharField(max_length=500, blank=True, null=True)
+    others = models.CharField(max_length=900, blank=True, null=True)
+
+    def __str__(self):
+        return f"Skills: {self.programming_languages or 'N/A'}, {self.frameworks or 'N/A'}"

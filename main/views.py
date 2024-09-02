@@ -2,7 +2,7 @@ from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.conf import settings
 from .forms import ContactModelForm
-from .models import Contact, Footer, Experience, About
+from .models import Contact, Footer, Experience, About, Skill
 from django.contrib import messages
 from datetime import date
 
@@ -28,8 +28,9 @@ def HomeView(request):
         form = ContactModelForm()
         
     about = About.objects.last()
-    data = Footer.objects.all()
+    skill = Skill.objects.last()
     experience = Experience.objects.all() 
+    data = Footer.objects.all()
     today = date.today()
     year = today.year
     
@@ -38,6 +39,7 @@ def HomeView(request):
         'about':about,
         'form':form,
         'data':data,
+        'skill':skill,
         'experience':experience,
         'year':year
     }

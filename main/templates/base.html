@@ -7,28 +7,28 @@
     <link rel="stylesheet" href="{% static "css/style.css" %}">
     {% tailwind_css %}
     <title>{% block title %}{% endblock title %}</title>
-    <link rel="icon" type="image/x-icon" href="{% static "image/receptionist.png" %}">
+    <link class='rounded-full' rel="icon" type="image/x-icon" href="{{ about.image.url }}">
   </head>
   <body class="bg-gray-200 " id='about'>
     {% comment %} nav start {% endcomment %}
-    <div class='lg:w-11/12 mx-auto'>
+    <div class='lg:w-11/12 lg:mx-auto'>
       <nav 
-        class="bg-white md:rounded-full lg:rounded-full justify-center items-center py-3 shadow-xl md:mx-6 lg:mx-6 mt-4">
+        class="bg-white md:rounded-full lg:rounded-full justify-center items-center py-3 shadow-xl md:mx-4 lg:mx-4 mt-4">
         <div class="flex justify-between mx-3 items-center text-lg">
           <ul>
-            <li><a href="#"><img class='size-10 rounded-full ring md:mx-1' src="{% static "image/Hasan.JPG" %}" alt="Logo"></a></li>
+            <li><a href="#"><img class='size-10 rounded-full ring md:mx-1' src="{{ about.image.url }}" alt="Logo"></a></li>
           </ul>
           <ul class="flex space-x-1 sm:space-x-8 lg:space-x-12 text-sm sm:text-lg md:text-lg lg:text-lg">
             <li><a class='hover:text-[rgba(255,0,0,1.0)] mx-0 md:mx-0 lg:mx-0' href="#home">Home</a></li>
-            <li><a class='hover:text-[rgba(255,0,0,1.0)] mx-2 md:mx-0 lg:mx-0' href="#skill">Skill</a></li>
-            <li><a class='hover:text-[rgba(255,0,0,1.0)] mx-2 md:mx-0 lg:mx-0' href="#project">Project</a></li>
+            <li><a class='hover:text-[rgba(255,0,0,1.0)] mx-2 md:mx-0 lg:mx-0' href="#skill">Skill's</a></li>
+            <li><a class='hover:text-[rgba(255,0,0,1.0)] mx-2 md:mx-0 lg:mx-0' href="#project">Projects</a></li>
             {% if experience %}
             <li><a class='hover:underline mx-0 md:mx-0 lg:mx-0' href="#experience">Experience</a></li>
             {% endif %}
             {% comment %} <li class='hidden sm:hidden-false'><a href="#">Blog</a></li> {% endcomment %}
           </ul>
-          <ul class="flex space-x-2 md:mx-4 lg:mx-4 sm:mx-2">
-            <li><a href="#contact">Contact</a></li>
+          <ul class="flex space-x-2 md:mx-2 lg:m2-4 sm:mx-2">
+            <li><a href="#contact"><img class='size-10' src="{% static "image/contact.png" %}" alt=""></a></li>
           </ul>
         </div>
       </nav>
@@ -49,8 +49,8 @@
           </ul>
           <ul class='flex justify-center items-center text-white space-x-4 -mt-10 mb-12'>
             <li><a href="#about">About</a></li>
-            <li><a href="#skill">Skill</a></li>
-            <li><a href="#project">Project</a></li>
+            <li><a href="#skill">Skill's</a></li>
+            <li><a href="#project">Projects</a></li>
             {% if experience %}
             <li><a href="#experience">Experience</a></li>
             {% endif %}

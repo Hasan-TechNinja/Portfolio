@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Home{% endblock title %}
+{% block title %}{{about.first_name}}{% endblock title %}
 {% block content %}
 {% comment %} hove section start {% endcomment %}
 <div id='home' class=''>
     {% comment %} <h1 class='text-2xl font-bold mx-2 my-3 md:mx-14 lg:mx-16 md:mt-10 lg:mt-10 text-left'>About</h1> {% endcomment %}
 </div class=''>
     <div class="mb-10 lg:w-11/12 xl:w-11/12 mx-auto mt-5">
-        <div id='home' class='m-2 md:flex lg:flex sm:justify-center lg:justify-evenly lg:items-center sm:mt-2 md:mt-2 shadow-sm sm:shadow-md md:shadow-lg lg:shadow-lg rounded-md bg-gray-100 py-8'>
+        <div id='home' class='m-2 md:flex lg:flex sm:justify-center lg:justify-evenly lg:items-center sm:mt-2 md:mx-6 lg:mx-auto md:mt-2 shadow-sm sm:shadow-md md:shadow-lg lg:shadow-lg rounded-md bg-gray-100 py-8'>
             <div class='md:w-1/2 lg:w-1/2 sm:mx-5 lg:mx-5'>
                 <div class='text-2xl font-bold flex justify-center items-center space-x-2 sm:justify-normal lg:justify-normal'>
                     
@@ -35,7 +35,7 @@
 </div>
 <div class='mx-2 md:mx-6 shadow-lg mt-6 rounded-lg bg-gray-100 mb-10 lg:w-11/12 xl:w-11/12 lg:mx-auto xl:mx-auto'>
     <hr>
-    <div class='mx-2 flex flex-col md:flex md:flex-row lg:flex lg:flex-row md:justify-around lg:mx-32 py-8 '>
+    <div class='mx-2 flex flex-col md:flex md:flex-row lg:flex lg:flex-row md:justify-around md:items-center lg:justify-around lg:items-center lg:mx-32 py-8 '>
         
         <div class='md:w-1/2 lg:w-1/2 lg:text-center md:text-center xl:justify-center md:mx-6 lg:mx-6 xl:mx-6'>
             <ul class='flex justify-center'>
@@ -54,26 +54,48 @@
                 <li class='size-14 m-5 md:size-20 lg:size-20 md:mx-8 lg:mx-12'><img src="{% static "image/tailwind.svg" %}" alt=""></li>
             </ul>
         </div>
-
-        
-            <div class="md:h-96 lg:h-80 md:w-px bg-gray-400 md:mx-4"></div>
-           
-
+        <div class="md:h-96 lg:h-80 md:w-px bg-gray-400 md:mx-4"></div>
             <div class='md:w-1/2 lg:w-1/2 py-2 flex justify-center items-center'>
                 <ul class='bg-gray-200 p-4 rounded-lg shadow-md md:text-md lg:text-md md:p-6 lg:p-10 space-y-4'>
-                    <li>Languages: Python 3+</li>
+                    {% if skill.programming_languages %}
+                        <li>Languages: {{ skill.programming_languages }}</li>
+                        <hr class="border-t-2 border-gray-400">
+                    {% endif %}
+                    {% if skill.frameworks %}
+                        <li>Frameworks: {{ skill.frameworks }}</li>
+                        <hr class="border-t-2 border-gray-400">
+                    {% endif %}
+                    {% if skill.tolse_and_platforms %}
+                        <li>Tolse & Platforms: {{ skill.tolse_and_platforms }}</li>
+                        <hr class="border-t-2 border-gray-400">
+                    {% endif %}
+                    {% if skill.databases %}
+                        <li>Databases: {{ skill.databases }}</li>
+                        <hr class="border-t-2 border-gray-400">
+                    {% endif %}
+                    {% if skill.cloud_and_devops %}
+                        <li>Cloud & Devops: {{ skill.cloud_and_devops }}</li>
+                        <hr class="border-t-2 border-gray-400">
+                    {% endif %}
+                    {% if skill.soft_skills %}
+                        <li>Soft Skills: {{ skill.soft_skills }}</li>
+                        <hr class="border-t-2 border-gray-400">
+                    {% endif %}
+                    <li>Operating Systems: {{ skill.operating_systems }}</li>
                     <hr class="border-t-2 border-gray-400">
-                    <li>Frameworks: Django 5+</li>
-                    <hr class="border-t-2 border-gray-400">
-                    <li>UI: HTML, Tailwind</li>
-                    <hr class="border-t-2 border-gray-400">
-                    <li>Database: Postgres</li>
-                    <hr class="border-t-2 border-gray-400">
-                    <li>Tools: Git, Linux, VS Code, PyCharm</li>
-                    <hr class="border-t-2 border-gray-400">
-                    <li>Speaking Language: Bangla, English</li>
+                    {% if skill.version_control %}
+                        <li>Virson Control: {{ skill.version_control }}</li>
+                        <hr class="border-t-2 border-gray-400">
+                    {% endif %}
+                    {% if skill.testing %}
+                        <li>Testing: {{ skill.testing }}</li>
+                        <hr class="border-t-2 border-gray-400">
+                    {% endif %}
+                    {% if skill.others %}
+                        <li>Others: {{ skill.others }}</li>
+                    {% endif %}
                 </ul>
-            </div>           
+        </div>           
     </div>
 </div>
 {% comment %} about section end {% endcomment %}
