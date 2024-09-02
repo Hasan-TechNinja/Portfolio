@@ -2,7 +2,7 @@ from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.conf import settings
 from .forms import ContactModelForm
-from .models import Contact, Footer, Experience, About, Skill, SkillImage
+from .models import Contact, Footer, Experience, About, Skill, SkillImage, Projects
 from django.contrib import messages
 from datetime import date
 
@@ -14,13 +14,11 @@ def HomeView(request):
             subject = 'New message from Portfolio'
             message_body = form.cleaned_data['message']
             from_email = form.cleaned_data['email']
-            sender_name = form.cleaned_data['name']  # Assuming you have a 'name' field in your form
+            sender_name = form.cleaned_data['name']
             recipient_list = ['hasantechninja@gmail.com']
 
-            # Format the message to include the sender's name and email
             message = f"Sender Name: {sender_name}\nSender Email: {from_email}\n\nMessage:\n{message_body}"
 
-            # Send the email
             send_mail(subject, message, from_email, recipient_list, fail_silently=False)
             messages.success(request, 'Successfully sent your message!')
             return redirect('home')
@@ -29,6 +27,7 @@ def HomeView(request):
         
     about = About.objects.last()
     skill = Skill.objects.last()
+    project = Projects.objects.all()
     SkillImages = SkillImage.objects.all()
     data = Footer.objects.all()
     today = date.today()
@@ -51,6 +50,7 @@ def HomeView(request):
         'form':form,
         'data':data,
         'skill':skill,
+        'project': project,
         'skimg': SkillImages,
         'experience':experience,
         'year':year, 

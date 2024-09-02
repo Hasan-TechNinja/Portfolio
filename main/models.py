@@ -91,12 +91,13 @@ class SkillImage(models.Model):
 
 class Projects(models.Model):
     name = models.CharField(max_length=200)
+    category = models.CharField(max_length=200, blank=True, null=True)
     start = models.DateField(blank=True, null=True)
     end = models.DateField(blank=True, null=True)
     description = models.TextField()
     image = models.ImageField(upload_to='projects')
-    github = models.URLField(blank=True, null=True)
-    live = models.URLField(blank=True, null=True)
+    github = models.CharField(max_length=500, blank=True, null=True)
+    live = models.CharField(max_length=500, blank=True, null=True)
 
     def project_duration(self):
         if self.start and self.end:

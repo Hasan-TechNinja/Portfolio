@@ -36,9 +36,9 @@
 <div id='skill' class='lg:w-11/12 xl:w-11/12 mx-auto'>
     {% comment %} <h1 class='text-2xl font-bold mx-2 -mb-3 mt-3 md:mx-14 lg:mx-16'>Skill's</h1> {% endcomment %}
 </div>
-<div class='mx-2 md:mx-6 shadow-lg mt-6 rounded-lg bg-gray-100 mb-10 lg:w-11/12 xl:w-11/12 lg:mx-auto xl:mx-auto'>
+<div class='mx-2 md:mx-6 shadow-lg mt-6 rounded-lg bg-gray-100 mb-8 lg:w-11/12 xl:w-11/12 lg:mx-auto xl:mx-auto'>
     <hr>
-    <div class='mx-2 flex flex-col md:flex md:flex-row lg:flex lg:flex-row md:justify-around md:items-center lg:justify-around lg:items-center lg:mx-32 py-8 '>
+    <div class='mx-2 flex flex-col md:flex md:flex-row lg:flex lg:flex-row md:justify-around md:items-center lg:justify-around lg:items-center lg:mx-32 py-5 '>
         
         <div class='md:w-1/2 lg:w-1/2 sm:text-center lg:text-center md:text-center xl:justify-center md:mx-6 lg:mx-6 xl:mx-6'>
             {% for img in skimg %}
@@ -107,85 +107,34 @@
 </div>
 
 <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:mx-6 lg:w-11/12 xl:w-11/12 lg:mx-auto xl:mx-auto'>
+    {% for project in project %}
     <div class="relative flex flex-col text-gray-700 bg-gray-100 shadow-md bg-clip-border rounded-xl w-full">
-
         <div class="relative h-56 mx-4 mt-4 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
-            <img src="{% static "image/ogani.png" %}" alt="card-image" />
+            <img src="{{ project.image.url }}" alt="Project Image" />
         </div>
         <div class="p-6">
-            <h5 class="block mb-2 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
-                E-commerce
-            </h5>
+            <div class="flex justify-between mb-2 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                <h2>{{ project.name }}</h2>
+                <h2>{{ project.category }}</h2>
+            </div>
             <p class="block text-base antialiased font-light leading-relaxed text-inherit">
-                The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona.
+                {{ project.description }}
             </p>
         </div>
         <div class="p-6 pt-0 text-center space-x-2 md:space-x-4 lg:space-x-6">
-            <button class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none" type="button"><a href="#" target="_blank">Live</a></button>
-
-            <button class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none" type="button"><a href="https://github.com/Hasan-TechNinja/Ogani.git" target="_blank">GitHub</a></button>
+            {% if project.live %}
+                <button class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none" type="button">
+                    <a href="{{ project.live }}" target="_blank">Live</a>
+                </button>
+            {% endif %}
+            {% if project.github %}
+                <button class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none" type="button">
+                    <a href="{{ project.github }}" target="_blank">GitHub</a>
+                </button>
+            {% endif %}
         </div>
     </div>
-
- 
-    <div class="relative flex flex-col text-gray-700 bg-gray-100 shadow-md bg-clip-border rounded-xl w-full">
-        <div class="relative h-56 mx-4 mt-4 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
-            <img src="{% static "image/shopping.png" %}" alt="card-image" />
-        </div>
-        <div class="p-6">
-            <h5 class="block mb-2 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
-                E-commerce
-            </h5>
-            <p class="block text-base antialiased font-light leading-relaxed text-inherit">
-                The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona.
-            </p>
-        </div>
-        <div class="p-6 pt-0 text-center space-x-2 md:space-x-4 lg:space-x-6">
-            <button class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none" type="button">Live</button>
-
-            <button class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none" type="button">GitHub</button>
-        </div>
-    </div>
-
-
-    <div class="relative flex flex-col text-gray-700 bg-gray-100 shadow-md bg-clip-border rounded-xl w-full">
-        <div class="relative h-56 mx-4 mt-4 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
-            <img src="{% static "image/Ecommerce.png" %}" alt="card-image" />
-        </div>
-        <div class="p-6">
-            <h5 class="block mb-2 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
-                E-commerce
-            </h5>
-            <p class="block text-base antialiased font-light leading-relaxed text-inherit">
-                The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona.
-            </p>
-        </div>
-        <div class="p-6 pt-0 text-center space-x-2 md:space-x-4 lg:space-x-6">
-            <button class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none" type="button">Live</button>
-
-            <button class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none" type="button"><a href="https://github.com/Hasan-TechNinja/Ecommerce.git" target="_blank">GitHub</a></button>
-        </div>
-    </div>
-
-
-    <div class="relative flex flex-col text-gray-700 bg-gray-100 shadow-md bg-clip-border rounded-xl w-full">
-        <div class="relative h-56 mx-4 mt-4 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
-            <img src="{% static "image/shop.png" %}" alt="card-image" />
-        </div>
-        <div class="p-6">
-            <h5 class="block mb-2 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
-                E-commerce
-            </h5>
-            <p class="block text-base antialiased font-light leading-relaxed text-inherit">
-                The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona.
-            </p>
-        </div>
-        <div class="p-6 pt-0 text-center space-x-2 md:space-x-4 lg:space-x-6">
-            <button class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none" type="button">Live</button>
-
-            <button class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none" type="button"><a href="https://github.com/Hasan-TechNinja/Shopping.git" target="_blank">GitHub</a></button>
-        </div>
-    </div>
+    {% endfor %}
 </div>
 
 {% comment %} project end here {% endcomment %}
@@ -249,7 +198,7 @@
 <div class="mb-10">
     <div id='home' class='m-2 md:mx-6 lg:mx-6 md:flex lg:flex sm:justify-center sm:mt-2 md:mt-2 shadow-sm sm:shadow-md md:shadow-lg lg:shadow-lg rounded-md bg-gray-100 py-8 lg:w-11/12 xl:w-11/12 lg:mx-auto xl:mx-auto'>
         <div class='sm:mx-5 lg:mx-5 w-full md:w-3/4 lg:w-1/2'>
-            <p class='text-black text-center text-lg'>You can contact me at +8801739989028 (Whatsapp & Telegram)</p>
+            <p class='text-black text-center text-lg'>You can contact me at {{ about.phone }} (Whatsapp & Telegram)</p>
             <hr class='border-1 border-gray-400 mb-4 mt-1'>
             <form action="" method='POST' class='mx-1'>
                 {% csrf_token %}

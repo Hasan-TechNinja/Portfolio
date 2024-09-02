@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Contact, Footer, Experience, About, Skill, SkillImage
+from .models import Contact, Footer, Experience, About, Skill, SkillImage, Projects
 
 # Register your models here.
 class ContactAdmin(admin.ModelAdmin):
@@ -31,3 +31,8 @@ admin.site.register(Skill, SkillAdmin)
 class SkillImageAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'image')
 admin.site.register(SkillImage, SkillImageAdmin)
+
+
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'category', 'start', 'end', 'description', 'image', 'github', 'live')
+admin.site.register(Projects, ProjectAdmin)
