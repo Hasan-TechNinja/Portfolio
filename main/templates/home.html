@@ -16,7 +16,7 @@
                 </div>
                 <div class='text-center sm:justify-normal lg:justify-normal flex font'><i>{{about.education}}</i></div>
                 <hr class='my-1 sm:my-3 lg:my-3'>
-                <div class='mx-1 text-sm sm:text-base md:text-lg lg:text-lg'>
+                <div class='mx-1 text-sm sm:text-base md:text-lg lg:text-lg '>
                     {{about.description}}
                 </div>
                 <div class='flex justify-center md:justify-start lg:justify-start'>
@@ -148,7 +148,7 @@
 
     {% for detail in experience_details %}
     <div class="relative flex flex-col text-gray-700 bg-gray-100 shadow-md bg-clip-border rounded-xl w-full"> 
-        <div class="relative mx-4 my-4 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
+        <div class="relative mx-4 my-4 overflow-hidden text-white bg-clip-border rounded-xl bg-blue-gray-500">
             <div class='flex flex-col md:flex-row justify-around items-center'>
                 {% if detail.experience.company_logo %}
                 <img class='w-14 h-14 m-2' src="{{ detail.experience.company_logo.url }}" alt="Company Logo">
@@ -169,8 +169,6 @@
                     <hr class='border-1 border-gray-400'>
                     <li class='my-2'>End date: {{ detail.experience.end_date|default:"Present" }}</li>
                     <hr class='border-1 border-gray-400'>
-                    {% comment %} <li class='my-2'>Is Current: {{ detail.experience.is_current }}</li>
-                    <hr class='border-1 border-gray-400'> {% endcomment %}
                     <li class='my-2'>Experience: {{ detail.years }} years and {{ detail.remaining_days }} days</li>
                     <hr class='border-1 border-gray-400'>
                     <li class='my-2'>Technologies: {{ detail.experience.technologies }}</li>
