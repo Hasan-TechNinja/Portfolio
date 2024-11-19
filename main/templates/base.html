@@ -14,10 +14,13 @@
 <div class='lg:w-11/12 lg:mx-auto fixed top-0 left-0 right-0 z-50'>
   <nav class="bg-white md:rounded-full lg:rounded-full justify-center items-center py-3 shadow-xl md:mx-4 lg:mx-4 mt-4">
     <div class="flex justify-between items-center mx-3 text-lg">
-      
+      {% for about in about %}
+      {% if about.status %}
       <ul class="flex-shrink-0">
         <li><a href="#home"><img class='w-10 h-10 rounded-full ring md:mx-1' src="{{ about.image.url }}" alt="Logo"></a></li>
       </ul>
+      {% endif %}
+      {% endfor %}
       
       <ul class="flex space-x-2 sm:space-x-8 lg:space-x-12 text-sm sm:text-lg md:text-lg lg:text-lg">
         <li><a class='hover:text-red-500' href="#home">Home</a></li>
@@ -47,6 +50,8 @@
   <div style="background-color: rgba(21, 4, 64, 1.0);" class="flex flex-col justify-center md:justify-evenly items-center md:flex-row md:items-center p-4 lg:rounded-t-md">
       <!-- Contact Information -->
       <div class="text-white text-sm text-center md:text-start lg:text-start mb-4 md:mb-0 space-y-2">
+        {% for about in about %}
+        {% if about.status %}
         <div class='flex space-x-2'>
           <img class='size-5' src="{% static "image/profileicon.png" %}" alt="">
           <p>{{about.first_name}} {{about.last_name}}</p>
@@ -58,16 +63,20 @@
         <div class='flex space-x-2'>
           <img class='size-5' src="{% static "image/phone-call.png" %}" alt="">
           <p>{{about.phone}}</p>
+          {% endif %}
+          {% endfor %}
         </div>
       </div>
   
       <!-- Social Media Links -->
       <div class="flex flex-wrap justify-center gap-2 mb-4 md:gap-4 lg:gap-6 mt-3">
         {% for data in data %}
+        {% if data.status %}
         <a class='flex flex-col justify-center items-center basis-auto md:basis-auto lg:basis-auto' href="{{ data.url }}" target="_blank">
             <img class="h-6 w-6 md:h-6 md:w-6 lg:h-7 lg:w-7" src="{{ data.logo.url }}" alt="">
             <h2 class='text-white text-sm my-2'>{{data.title}}</h2>
         </a>
+        {% endif %}
         {% endfor %}
     </div>
            
@@ -86,9 +95,13 @@
   </div>
   
 <!-- Copyright Notice -->
+ {% for about in about %}
+ {% if about.status %}
 <div style="background-color: rgba(21, 4, 64, 0.9);" class=" text-white text-sm text-center py-2">
     © {{year}} {{about.first_name}} {{about.last_name}}. All rights reserved.
 </div>
+{% endif %}
+{% endfor %}
   </footer>
     {% comment %} footerend {% endcomment %}
   </body>

@@ -15,6 +15,7 @@ class Footer(models.Model):
     title = models.CharField(max_length=100)
     logo = models.ImageField(upload_to='footer')
     url = models.URLField(default='#')
+    status = models.BooleanField(default=True)
 
     def __str__(self):
         return f"{self.title} logo"
@@ -31,6 +32,7 @@ class Experience(models.Model):
     technologies = models.CharField(max_length=200, help_text="Comma-separated list of technologies")
     company_logo = models.ImageField(upload_to='company_logos/', null=True, blank=True)
     company_website = models.CharField(max_length=500, default="#")
+    status = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
         self.technologies = ', '.join([tech.strip() for tech in self.technologies.split(',') if tech.strip()])
@@ -61,6 +63,7 @@ class About(models.Model):
     description = models.TextField()
     CV = models.FileField(upload_to='cv')
     image = models.ImageField(upload_to='profile')
+    status = models.BooleanField(default=True)
 
 def __str__(self):
     return f"{self.first_name} {self.last_name} information"
@@ -77,6 +80,7 @@ class Skill(models.Model):
     version_control = models.CharField(max_length=500, blank=True, null=True)
     testing = models.CharField(max_length=500, blank=True, null=True)
     others = models.CharField(max_length=900, blank=True, null=True)
+    status = models.BooleanField(default=True)
 
     def __str__(self):
         return f"Skills: {self.programming_languages or 'N/A'}, {self.frameworks or 'N/A'}"
@@ -84,6 +88,7 @@ class Skill(models.Model):
 class SkillImage(models.Model):
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='skill')
+    status = models.BooleanField(default=True)
 
     def __str__(self):
         return f"{self.image} logo"
@@ -98,6 +103,7 @@ class Projects(models.Model):
     image = models.ImageField(upload_to='projects')
     github = models.CharField(max_length=500, blank=True, null=True)
     live = models.CharField(max_length=500, blank=True, null=True)
+    status = models.BooleanField(default=True)
 
     def project_duration(self):
         if self.start and self.end:

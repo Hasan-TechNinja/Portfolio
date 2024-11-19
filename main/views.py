@@ -25,7 +25,7 @@ def HomeView(request):
     else:
         form = ContactModelForm()
         
-    about = About.objects.last()
+    about = About.objects.all()
     skill = Skill.objects.last()
     project = Projects.objects.all()
     SkillImages = SkillImage.objects.all()
