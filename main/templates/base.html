@@ -74,7 +74,7 @@
         {% if data.status %}
         <a class='flex flex-col justify-center items-center basis-auto md:basis-auto lg:basis-auto' href="{{ data.url }}" target="_blank">
             <img class="h-6 w-6 md:h-6 md:w-6 lg:h-7 lg:w-7" src="{{ data.logo.url }}" alt="">
-            <h2 class='text-white text-sm my-2'>{{data.title}}</h2>
+            <h2 class='text-white text-sm my-2 hover:text-gray-400'>{{data.title}}</h2>
         </a>
         {% endif %}
         {% endfor %}

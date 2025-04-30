@@ -1,4 +1,4 @@
-#!/home/kali/Development/Portfolio/env/bin/python3
+#!/home/kali/Development/Portfolio/env/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
