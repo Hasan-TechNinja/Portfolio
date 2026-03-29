@@ -8,7 +8,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BASE_DIR)
 
 # Set correct settings module
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "portfolio.settings")  # 👈 change if needed
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Portfolio.settings")
 
 from django.core.wsgi import get_wsgi_application
 

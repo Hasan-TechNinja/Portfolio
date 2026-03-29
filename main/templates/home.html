@@ -2,237 +2,318 @@
 {% load static %}
 {% block title %}{{about.first_name}}{% endblock title %}
 {% block content %}
-{% comment %} hove section start {% endcomment %}
-<div id='home' class=''>
-    {% comment %} <h1 class='text-2xl font-bold mx-2 my-3 md:mx-14 lg:mx-16 md:mt-10 lg:mt-10 text-left'>About</h1> {% endcomment %}
-</div class=''>
+<!-- home section start -->
+<div id='home' class='pt-24 md:pt-32'></div>
 {% for about in about %}
 {% if about.status %}
-    <div class="mb-10 lg:w-11/12 xl:w-11/12 mx-auto mt-5">
-        <div id='home' class='my-2 md:flex lg:flex sm:justify-center lg:justify-evenly lg:items-center mt-24 sm:mt-24 md:mx-6 lg:mx-auto md:mt-24 shadow-sm sm:shadow-md md:shadow-lg lg:shadow-lg rounded-md bg-gray-100 py-8'>
-            <div class='md:w-1/2 lg:w-1/2 mx-3 lg:mx-5'>
-                <div class='text-2xl font-bold flex justify-start items-center space-x-0 sm:justify-normal lg:justify-normal'>
-                    
-                    <h2 class='text-blue-700 lg:text-3xl mx-2'>{{about.first_name}}  </h2>
-                    <h2 class='text-teal-600 lg:text-3xl'>{{about.last_name}}</h2>
+    <div class="container mx-auto px-4 md:px-6 bg-white rounded-lg">
+        <div class='flex flex-col-reverse md:flex-row items-center justify-between gap-12 py-8'>
+            <div class='md:w-3/5 space-y-6'>
+                <div class='space-y-2'>
+                    <h3 class="text-brand-600 font-bold uppercase tracking-widest text-xs">{{ about.role }}</h3>
+                    <h1 class='font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight'>
+                        Hi, I'm <span class="text-brand-600">{{about.first_name}}</span> {{about.last_name}}
+                    </h1>
+                    <p class='text-lg text-slate-500 font-medium italic'>{{about.education}}</p>
                 </div>
-                <div class='justify-start sm:justify-normal lg:justify-normal flex font'><i>{{about.education}}</i></div>
-                <hr class='my-3 sm:my-3 lg:my-3'>
-                <div class='mx-1 text-sm sm:text-base md:text-lg lg:text-lg '>
+                
+                <div class='prose prose-slate prose-lg max-w-none text-slate-600 leading-relaxed'>
                     {{about.description}}
                 </div>
-                <div class='flex justify-center md:justify-start lg:justify-start'>
-                    <button class='mt-2 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-2 sm:p-3 font-sans font-bold text-xs sm:text-sm my-2 sm:my-4'>
-                        <a href="{{about.CV.url}}" target="_blank" class='block'>Download CV</a>
-                    </button>
+                
+                <div class='pt-6 flex flex-wrap gap-4'>
+                    <a href="{{about.CV.url}}" target="_blank" class='inline-flex items-center px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-2xl transition-all hover:shadow-xl hover:-translate-y-1'>
+                        Download CV
+                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    </a>
+                    <a href="#contact" class='inline-flex items-center px-8 py-4 bg-white border-2 border-slate-200 hover:border-brand-500 text-slate-700 font-bold rounded-2xl transition-all hover:bg-brand-50'>
+                        Contact Me
+                    </a>
                 </div>
             </div>
-            <div class='flex justify-center my-3'><img class='rounded-full size-52 md:size-60 lg:size-80 sm:rounded-3xl lg:rounded-3xl ring sm:ring md:aria-hidden:ring' src="{{about.image.url}}" alt=""></div>
+            <div class='md:w-2/5 flex justify-center sticky top-24'>
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-tr from-brand-600 to-teal-400 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+                    <img class='relative rounded-3xl size-64 md:size-80 lg:size-96 object-cover shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]' src="{{about.image.url}}" alt="{{about.first_name}}">
+                </div>
+            </div>
         </div>
     </div>
 {% endif %}
 {% endfor %}
-{% comment %} home section end {% endcomment %}
+<!-- home section end -->
 
-{% comment %} about section start {% endcomment %}
-<div id='skill' class='lg:w-11/12 xl:w-11/12 mx-auto'>
-    {% comment %} <h1 class='text-2xl font-bold mx-2 -mb-3 mt-3 md:mx-14 lg:mx-16'>Skill's</h1> {% endcomment %}
-</div>
-<div class='mx-0 md:mx-6 shadow-lg mt-6 rounded-lg bg-gray-100 mb-8 lg:w-11/12 xl:w-11/12 lg:mx-auto xl:mx-auto'>
-    <hr>
-    <div class='mx-2 flex flex-col md:flex md:flex-row lg:flex lg:flex-row md:justify-around md:items-center lg:justify-around lg:items-center lg:mx-32 py-5 '>
+<!-- skills section start -->
+<div id='skill' class='py-20 relative overflow-hidden z-0'>
+    <!-- Decorative background elements -->
+    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-50 rounded-full blur-[100px] -z-10 opacity-70 translate-x-1/3 -translate-y-1/3"></div>
+    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-teal-50/50 rounded-full blur-[80px] -z-10 opacity-70 -translate-x-1/3 translate-y-1/3"></div>
+
+    <div class="container mx-auto px-4 md:px-6">
+        <div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div class="md:w-2/3">
+                <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight">Technical <span class="text-brand-600">Expertise</span></h2>
+                <div class='w-20 h-1.5 bg-brand-600 rounded-full mt-3'></div>
+                <p class="mt-6 text-slate-500 text-base leading-relaxed max-w-2xl">
+                    A comprehensive overview of my technical skills and the technologies I utilize to architect, develop, and deploy scalable solutions.
+                </p>
+            </div>
+        </div>
         
-        <div class='md:w-1/2 lg:w-1/2 sm:text-center lg:text-center md:text-center xl:justify-center md:mx-6 lg:mx-6 xl:mx-6'>
-            {% for img in skimg %}
-                {% if img.status %}
-                    {% if forloop.first or forloop.counter0|divisibleby:3 %}
-                    <ul class='flex justify-center'>
-                        {% endif %}
-                            <li class='size-12 m-5 sm:size-16 md:size-20 lg:size-20 sm:mx-8 md:mx-8 lg:mx-12 flex w-1/3'>
-                                <img class='flex justify-center' src="{{ img.image.url }}" alt="">
-                            </li>
-                        {% if forloop.counter|divisibleby:3 or forloop.last %}
-                    </ul>
-                    {% endif %}
-                {% endif %}
-            {% endfor %}
-
-        </div>
-        <div class="md:h-96 lg:h-80 md:w-px bg-gray-400 md:mx-4"></div>
-            <div class='md:w-1/2 lg:w-1/2 py-2 flex justify-center items-center'>
-                <ul class='bg-gray-200 p-4 rounded-lg shadow-md text-sm sm:text-base md:text-lg lg:text-lg md:p-6 lg:p-10 space-y-4'>
-                {% if skill.programming_languages %}
-                    <li>Languages: {{ skill.programming_languages }}</li>
-                    <hr class="border-t-2 border-gray-400">
-                {% endif %}
-                {% if skill.frameworks %}
-                    <li>Frameworks: {{ skill.frameworks }}</li>
-                    <hr class="border-t-2 border-gray-400">
-                {% endif %}
-                {% if skill.tolse_and_platforms %}
-                    <li>Tolse & Platforms: {{ skill.tolse_and_platforms }}</li>
-                    <hr class="border-t-2 border-gray-400">
-                {% endif %}
-                {% if skill.databases %}
-                    <li>Databases: {{ skill.databases }}</li>
-                    <hr class="border-t-2 border-gray-400">
-                {% endif %}
-                {% if skill.cloud_and_devops %}
-                    <li>Cloud & Devops: {{ skill.cloud_and_devops }}</li>
-                    <hr class="border-t-2 border-gray-400">
-                {% endif %}
-                {% if skill.soft_skills %}
-                    <li>Soft Skills: {{ skill.soft_skills }}</li>
-                    <hr class="border-t-2 border-gray-400">
-                {% endif %}
-                <li>Operating Systems: {{ skill.operating_systems }}</li>
-                <hr class="border-t-2 border-gray-400">
-                {% if skill.version_control %}
-                    <li>Virson Control: {{ skill.version_control }}</li>
-                    <hr class="border-t-2 border-gray-400">
-                {% endif %}
-                {% if skill.testing %}
-                    <li>Testing: {{ skill.testing }}</li>
-                    <hr class="border-t-2 border-gray-400">
-                {% endif %}
-                {% if skill.others %}
-                    <li>Others: {{ skill.others }}</li>
-                {% endif %}
-            </ul>
-        </div>           
-    </div>
-</div>
-{% comment %} about section end {% endcomment %}
-
-
-{% comment %} project start here {% endcomment %}
-<div id='project' class="lg:w-11/12 xl:w-11/12 lg:mx-auto xl:mx-auto">
-    <h1 class='text-2xl font-bold mx-2 my-3 md:mx-14 lg:mx-16 text-left'>Projects</h1>
-</div>
-
-<div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:mx-6 lg:w-11/12 xl:w-11/12 lg:mx-auto xl:mx-auto'>
-    {% for project in project %}
-    {% if project.status %}
-    <div class="relative flex flex-col text-gray-700 bg-gray-100 shadow-md bg-clip-border rounded-xl w-full">
-        <div class="relative h-56 mx-3 mt-4 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
-            <img src="{{ project.image.url }}" alt="Project Image" />
-        </div>
-        <div class="py-6 px-3">
-            <div class="flex justify-between mb-2 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
-                <h2>{{ project.name }}</h2>
-                <h2>{{ project.category }}</h2>
-            </div>
-            <p class="block text-sm sm:text-base md:text-lg lg:text-lg antialiased font-light leading-relaxed text-inherit">
-                {{ project.description }}
-            </p>
-        </div>
-        <div class="p-6 pt-0 text-center space-x-2 md:space-x-4 lg:space-x-6">
-            {% if project.live %}
-                <button class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none" type="button">
-                    <a href="{{ project.live }}" target="_blank">Live</a>
-                </button>
-            {% endif %}
-            {% if project.github %}
-                <button class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none" type="button">
-                    <a href="{{ project.github }}" target="_blank">GitHub</a>
-                </button>
-            {% endif %}
-        </div>
-    </div>
-    {% endif %}
-    {% endfor %}
-</div>
-
-{% comment %} project end here {% endcomment %}
-
-{% comment %} Experience start {% endcomment %}
-
-{% if experience %}
-<div id='experience' class="w-full lg:w-11/12 xl:w-11/12 mt-10 lg:mx-auto xl:mx-auto">
-    <h1 class='text-2xl font-bold mx-2 my-3 md:mx-14 lg:mx-16 text-left'>Experience</h1>
-</div>
-
-<div class='mb-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mx-0 md:mx-6 lg:w-11/12 xl:w-11/12 lg:mx-auto xl:mx-auto'>
-    
-    {% for detail in experience_details %}
-    <div class="relative flex flex-col text-gray-700 bg-gray-100 shadow-md bg-clip-border rounded-xl w-full"> 
-        <div class="relative mx-2 my-4 overflow-hidden text-white bg-clip-border rounded-xl bg-blue-gray-500">
-            <div class='flex flex-col md:flex-row justify-around items-center'>
-                {% if detail.experience.company_logo %}
-                <img class='w-14 h-14 m-2' src="{{ detail.experience.company_logo.url }}" alt="Company Logo">
-                {% endif %}
-                <h2 class='text-black font-bold text-lg'>{{ detail.experience.company_name }}</h2>
-            </div>
-            <hr class='border-1 border-gray-800 justify-center my-2'>
-            <div class='text-black mt-2 mx-1'>
-                <p class="text-sm sm:text-base md:text-lg lg:text-lg">{{ detail.experience.description }}.</p>
-            </div>
-            <div>
-                <ul class='text-black mt-4 mx-2 text-sm sm:text-base md:text-lg lg:text-lg'>
-                    <li class='my-2'>Job Title: {{ detail.experience.job_title }}</li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Location: {{ detail.experience.location }}</li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Start date: {{ detail.experience.start_date }}</li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>End date: {{ detail.experience.end_date|default:"Present" }}</li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Experience: {{ detail.years }} years and {{ detail.remaining_days }} days</li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Technologies: {{ detail.experience.technologies }}</li>
-                    <hr class='border-1 border-gray-400'>
-                    <li class='my-2'>Website: <a class='text-blue-600 hover:underline' href="{{ detail.experience.company_website }}" target='_blank'>Click me</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
-
-</div>  
-{% endif %}
-
-{% comment %} Experience end {% endcomment %}
-
-
-{% comment %} contact start {% endcomment %}
-<div id='contact' class='lg:w-11/12 xl:w-11/12 lg:mx-auto xl:mx-auto my-3 lg:mt-10 xl:mt-10'>
-    {% comment %} <h1 class='text-2xl font-bold mx-2 my-3 md:mx-14 lg:mx-16 md:mt-10 lg:mt-10 text-left'>Contact</h1> {% endcomment %}
-</div>
-<div class="mb-10">
-    <div id='home' class='m-2 md:mx-6 lg:mx-6 md:flex lg:flex sm:justify-center sm:mt-2 md:mt-2 shadow-sm sm:shadow-md md:shadow-lg lg:shadow-lg rounded-md bg-gray-100 py-8 lg:w-11/12 xl:w-11/12 lg:mx-auto xl:mx-auto'>
-        <div class='sm:mx-5 lg:mx-5 w-full md:w-3/4 lg:w-1/2'>
-            {% for about in about %}
-            {% if about.status %}
-            <p class='text-black text-center ttext-sm sm:text-base md:text-lg lg:text-lg'>You can contact me at {{ about.phone }} (Whatsapp & Telegram)</p>
-            {% endif %}
-            {% endfor %}
-            <hr class='border-1 border-gray-400 mb-4 mt-1'>
-            <form action="" method='POST' class='mx-1'>
-                {% csrf_token %}
-                {% for form in form %}
-                    <div class="mb-4">
-                        <label class='block text-sm font-medium text-gray-700'>
-                            {{form.label_tag}} 
-                        </label>
-                        {% if form.errors %}
-                            <p class='text-red-600 text-sm mt-1'>{{form.errors}}</p>
-                        {% endif %}
-                        <div class="mt-1">
-                            {{form}}
-                        </div>
+        {% if skill_categories %}
+        <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+            {% for category, skills in skill_categories.items %}
+            <div class="bg-white/80 backdrop-blur-xl p-8 rounded-[2rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(79,70,229,0.08)] transition-all duration-500 hover:-translate-y-1 group">
+                <div class="flex items-center gap-4 mb-8 border-b border-slate-100 pb-6">
+                    <div class="w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center border border-brand-100/50 text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition-colors duration-500 shadow-sm">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                        </svg>
                     </div>
-                {% endfor %}    
-                <button class='bg-gray-900 hover:shadow-lg text-white p-2 rounded mt-2 w-full sm:w-auto text-sm sm:text-base md:text-lg lg:text-lg'>Submit</button>
-                {% if messages %}
-                {% for message in messages %}
-                    <p class="text-sm sm:text-base md:text-lg lg:text-lg text-green-600 text-center mt-4">{{ message }}</p>
+                    <h3 class="font-display font-black text-lg md:text-xl lg:text-2xl text-slate-800 tracking-tight">{{ category }}</h3>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-y-6 gap-x-4">
+                    {% for skill in skills %}
+                    <div class="flex items-center gap-3.5 group/skill">
+                        <div class="w-11 h-11 rounded-xl bg-slate-50 flex flex-shrink-0 items-center justify-center border border-slate-100 group-hover/skill:bg-white group-hover/skill:border-brand-200 group-hover/skill:shadow-md transition-all duration-300">
+                            <img class="w-5 h-5 object-contain group-hover/skill:scale-110 transition-transform duration-300" src="{{ skill.image.url }}" alt="{{ skill.name }}">
+                        </div>
+                        <span class="text-[14px] font-bold text-slate-600 group-hover/skill:text-brand-700 transition-colors drop-shadow-sm font-sans">{{ skill.name }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+<!-- skills section end -->
+
+
+<!-- projects start here -->
+<div id='project' class="py-20">
+    <div class="container mx-auto px-4 md:px-6">
+        <div class="flex flex-col md:flex-row items-center justify-between mb-12 gap-8">
+            <div>
+                <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900">Featured Projects</h2>
+                <div class='w-20 h-1.5 bg-brand-600 rounded-full mt-3'></div>
+            </div>
+            
+            <!-- Category Filter -->
+            <div class="flex flex-wrap gap-2" id="project-filters">
+                <button class="filter-btn active px-6 py-2.5 rounded-full text-xs font-bold transition-all duration-300 bg-brand-600 text-white shadow-lg shadow-brand-200" data-filter="all">All</button>
+                {% for cat in project_categories %}
+                <button class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold transition-all duration-300 bg-white text-slate-600 border border-slate-200 hover:border-brand-300 hover:bg-brand-50" data-filter="{{ cat.key }}">{{ cat.label }}</button>
                 {% endfor %}
+            </div>
+        </div>
+
+        <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8' id="projects-grid">
+            {% for project in project %}
+            {% if project.status %}
+            <div class="project-card group flex flex-col bg-white border border-slate-100 rounded-3xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2" data-category="{{ project.category }}">
+                <div class="relative aspect-video overflow-hidden">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="{{ project.image.url }}" alt="{{ project.name }}" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div class="pt-6 px-6 pb-2">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="font-display font-bold text-xl text-slate-900 group-hover:text-brand-600 transition-colors">{{ project.name }}</h3>
+                        {% if project.category %}
+                        <span class="ml-2 flex-shrink-0 px-3 py-1 bg-brand-50 text-brand-700 text-[10px] font-bold uppercase tracking-wider rounded-full">{{ project.get_category_display }}</span>
+                        {% endif %}
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6 line-clamp-3">
+                        {{ project.description }}
+                    </p>
+                </div>
+                <div class="mt-auto p-6 pt-0 flex gap-3">
+                    {% if project.live %}
+                    <a href="{{ project.live }}" target="_blank" class="flex-1 text-center py-2.5 bg-slate-900 text-white font-bold text-xs rounded-xl hover:bg-brand-600 transition-colors">
+                        Live Demo
+                    </a>
+                    {% endif %}
+                    {% if project.github %}
+                    <a href="{{ project.github }}" target="_blank" class="flex-1 text-center py-2.5 bg-white border border-slate-200 text-slate-700 font-bold text-xs rounded-xl hover:border-brand-500 hover:bg-brand-50 transition-colors">
+                        GitHub
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
             {% endif %}
-            </form> 
+            {% endfor %}
         </div>
     </div>
 </div>
-{% comment %} contact end {% endcomment %}
+<!-- projects end here -->
 
+<!-- Experience start -->
+{% if experience %}
+<div id='experience' class="py-20">
+    <div class="container mx-auto px-4 md:px-6">
+        <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-12 border-l-4 border-brand-600 pl-4">Work Experience</h2>
+        
+        <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+            {% for detail in experience_details %}
+            <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm transition-all hover:shadow-xl group"> 
+                <div class='flex items-center gap-4 mb-6'>
+                    {% if detail.experience.company_logo %}
+                    <div class="w-16 h-16 rounded-2xl bg-slate-50 p-2 flex items-center justify-center border border-slate-100">
+                        <img class='max-w-full max-h-full object-contain' src="{{ detail.experience.company_logo.url }}" alt="{{ detail.experience.company_name }}">
+                    </div>
+                    {% endif %}
+                    <div>
+                        <h3 class='font-display font-bold text-xl text-slate-900'>{{ detail.experience.company_name }}</h3>
+                        <p class="text-brand-600 text-sm font-semibold">{{ detail.experience.job_title }}</p>
+                    </div>
+                </div>
+                
+                <p class="text-slate-600 text-sm leading-relaxed mb-8 min-h-[4.5rem]">
+                    {{ detail.experience.description }}
+                </p>
+                
+                <div class="space-y-4 pt-6 border-t border-slate-100">
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="text-slate-400 font-bold uppercase tracking-widest">Period</span>
+                        <span class="text-slate-700 font-bold">{{ detail.experience.start_date|date:"M Y" }} — {{ detail.experience.end_date|date:"M Y"|default:"Present" }}</span>
+                    </div>
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="text-slate-400 font-bold uppercase tracking-widest">Duration</span>
+                        <span class="text-slate-700 font-bold">{{ detail.duration }}</span>
+                    </div>
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="text-slate-400 font-bold uppercase tracking-widest">Location</span>
+                        <span class="text-slate-700 font-bold">{{ detail.experience.location }}</span>
+                    </div>
+                </div>
+                
+                {% if detail.experience.technologies %}
+                <div class="mt-6 flex flex-wrap gap-1.5">
+                    {% for tech in detail.experience.technologies_list %}
+                    <span class="px-2.5 py-1 bg-brand-50 text-brand-700 text-[10px] font-bold rounded-full">{{ tech }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <div class="mt-6">
+                    <a href="{{ detail.experience.company_website }}" target='_blank' class='inline-flex items-center text-sm font-bold text-brand-600 hover:text-brand-700 transition-colors'>
+                        Visit Website
+                        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>  
+    </div>
 </div>
+{% endif %}
+<!-- Experience end -->
+
+
+<!-- contact section start -->
+<div id='contact' class='py-20'>
+    <div class="container mx-auto px-4 md:px-6 max-w-6xl">
+        <div class='bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-slate-100 flex flex-col md:flex-row'>
+            <div class="md:w-1/3 bg-slate-900 p-12 text-white flex flex-col justify-between">
+                <div>
+                    <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold mb-6">Let's Talk</h2>
+                    <p class="text-slate-400 leading-relaxed">
+                        Interested in working together? Drop me a message and I'll get back to you as soon as possible.
+                    </p>
+                </div>
+                
+                <div class="space-y-4 pt-12">
+                    {% for about in about %}
+                    {% if about.status %}
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                        </div>
+                        <span class="text-sm font-medium">{{ about.phone }}</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <span class="text-sm font-medium">{{ about.email }}</span>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="md:w-2/3 p-12 order-first md:order-last">
+                <form action="" method='POST' class='space-y-6'>
+                    {% csrf_token %}
+                    {% for form in form %}
+                        <div class="space-y-2">
+                            <label class='block text-xs font-bold uppercase tracking-widest text-slate-500'>
+                                {{form.label}} 
+                            </label>
+                            <div class="relative">
+                                {{form}}
+                            </div>
+                            {% if form.errors %}
+                                <p class='text-red-600 text-[10px] font-bold mt-1 uppercase'>{{form.errors}}</p>
+                            {% endif %}
+                        </div>
+                    {% endfor %}    
+                    <button class='w-full md:w-auto px-12 py-4 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-2xl transition-all hover:shadow-xl hover:-translate-y-1'>
+                        Send Message
+                    </button>
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="mt-6 p-4 bg-brand-50 border border-brand-100 rounded-2xl text-brand-700 text-center font-bold">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </form> 
+            </div>
+        </div>
+    </div>
+</div>
+<!-- contact section end -->
+
+<script>
+    // Live Filtering for Projects
+    document.addEventListener('DOMContentLoaded', () => {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectsGrid = document.getElementById('projects-grid');
+        const projects = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button styles
+                filterButtons.forEach(btn => btn.classList.remove('active', 'bg-brand-600', 'text-white', 'shadow-lg', 'shadow-brand-200'));
+                filterButtons.forEach(btn => btn.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200'));
+                
+                button.classList.add('active', 'bg-brand-600', 'text-white', 'shadow-lg', 'shadow-brand-200');
+                button.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+
+                // Filter logic
+                const filterValue = button.getAttribute('data-filter');
+
+                projects.forEach(project => {
+                    if (filterValue === 'all' || project.getAttribute('data-category') === filterValue) {
+                        project.style.display = 'flex';
+                        // Add a tiny delay for animation feel
+                        setTimeout(() => {
+                            project.style.opacity = '1';
+                            project.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        project.style.opacity = '0';
+                        project.style.transform = 'translateY(10px)';
+                        setTimeout(() => {
+                            project.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+    });
+</script>
 {% endblock content %}

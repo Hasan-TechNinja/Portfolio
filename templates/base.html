@@ -5,104 +5,179 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     {% tailwind_css %}
     <title>{% block title %}{% endblock title %}</title>
     <link class='rounded-full' rel="icon" type="image/x-icon" href="{{ about.image.url }}">
   </head>
-  <body class="bg-gray-200 " id='about'>
-{% comment %} nav start {% endcomment %}
-<div class='lg:w-11/12 lg:mx-auto fixed top-0 left-0 right-0 z-50'>
-  <nav class="bg-white md:rounded-full lg:rounded-full justify-center items-center py-3 shadow-xl md:mx-4 lg:mx-4 mt-4">
-    <div class="flex justify-between items-center mx-3 text-lg">
+  <body class="bg-[#f3f2ef] font-sans text-slate-900 scroll-smooth" id='about'>
+<!-- nav start -->
+<div class='fixed top-0 left-0 right-0 z-50 w-full'>
+  <nav class="w-full bg-white/90 backdrop-blur-xl border-b border-white/60 shadow-sm" aria-label="Main Navigation">
+    <div class="container mx-auto flex justify-between items-center px-4 py-3 md:px-6">
       {% for about in about %}
       {% if about.status %}
-      <ul class="flex-shrink-0">
-        <li><a href="#home"><img class='w-10 h-10 rounded-full ring md:mx-1' src="{{ about.image.url }}" alt="Logo"></a></li>
-      </ul>
+      <div class="flex-shrink-0">
+        <a href="#home" class="group transition-transform duration-300 hover:scale-105 block" aria-label="Go to home">
+            <img class='w-10 h-10 lg:w-11 lg:h-11 rounded-full ring-2 ring-brand-100 group-hover:ring-brand-500 shadow-sm' src="{{ about.image.url }}" alt="Logo">
+        </a>
+      </div>
       {% endif %}
       {% endfor %}
       
-      <ul class="flex space-x-2 sm:space-x-8 lg:space-x-12 text-sm sm:text-lg md:text-lg lg:text-lg">
-        <li><a class='hover:text-red-500' href="#home">Home</a></li>
-        <li><a class='hover:text-red-500' href="#skill">Skill's</a></li>
-        <li><a class='hover:text-red-500' href="#project">Projects</a></li>
+      <ul class="flex items-center space-x-3 sm:space-x-6 md:space-x-8 lg:space-x-12 text-[12px] sm:text-[14px] md:text-[15px] font-semibold tracking-tight text-slate-600 overflow-x-auto whitespace-nowrap scrollbar-hide py-1" id="desktop-menu">
+        <li><a class='nav-link hover:text-brand-600 transition-colors duration-200' href="#home">Home</a></li>
+        <li><a class='nav-link hover:text-brand-600 transition-colors duration-200' href="#skill">Skills</a></li>
+        <li><a class='nav-link hover:text-brand-600 transition-colors duration-200' href="#project">Projects</a></li>
         {% if experience %}
-        <li><a class='hover:text-red-500' href="#experience">Experience</a></li>
+        <li><a class='nav-link hover:text-brand-600 transition-colors duration-200' href="#experience">Experience</a></li>
         {% endif %}
       </ul>
       
-      <ul class="flex-shrink-0 space-x-2">
-        <li><a href="#contact"><img class='w-10 h-10' src="{% static "image/contact.png" %}" alt="Contact Icon"></a></li>
-      </ul>
+      <div class="flex items-center pl-2">
+        <a href="#contact" class="flex items-center justify-center px-4 md:px-5 py-2 md:py-2.5 bg-brand-600 text-white font-bold text-[10px] md:text-sm tracking-wide rounded-full hover:bg-brand-700 hover:shadow-lg hover:shadow-brand-600/20 transition-all duration-300" aria-label="Contact me">
+            Let's Talk
+        </a>
+      </div>
       
     </div>
   </nav>
 </div>
-{% comment %} nav end {% endcomment %}
-
-
+<!-- nav end -->
 
      {% block content %}{% endblock content %} 
      
-     
-{% comment %} footer start {% endcomment %}
-<footer class="lg:w-11/12 mx-auto mt-4">
-  <div style="background-color: rgba(21, 4, 64, 1.0);" class="flex flex-col justify-center md:justify-evenly items-center md:flex-row md:items-center p-4 lg:rounded-t-md">
+     <!-- Back to Top Button -->
+     <button id="back-to-top" class="fixed bottom-8 right-8 z-[60] p-4 bg-white text-brand-600 rounded-2xl shadow-2xl border border-slate-100 opacity-0 invisible translate-y-4 transition-all duration-300 hover:bg-brand-600 hover:text-white group" aria-label="Back to top">
+        <svg class="w-6 h-6 transition-transform group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+     </button>
+
+<!-- footer start -->
+<footer class="mt-20 pt-12 pb-10 border-t border-slate-200 bg-white">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
       <!-- Contact Information -->
-      <div class="text-white text-sm text-center md:text-start lg:text-start mb-4 md:mb-0 space-y-2">
+      <div class="md:col-span-4 space-y-4">
+        <h3 class="text-xs font-bold uppercase tracking-widest text-brand-600 font-display">Get in touch</h3>
         {% for about in about %}
         {% if about.status %}
-        <div class='flex space-x-2'>
-          <img class='size-5' src="{% static "image/profileicon.png" %}" alt="">
-          <p>{{about.first_name}} {{about.last_name}}</p>
+        <div class="space-y-4">
+          <div class='flex items-center space-x-3 group'>
+            <div class="p-2 bg-brand-50 rounded-lg group-hover:bg-brand-100 transition-colors">
+              <img class='w-4 h-4' src="{% static "image/profileicon.png" %}" alt="">
+            </div>
+            <p class="text-slate-600 font-medium">{{about.first_name}} {{about.last_name}}</p>
+          </div>
+          <div class='flex items-center space-x-3 group'>
+            <div class="p-2 bg-brand-50 rounded-lg group-hover:bg-brand-100 transition-colors">
+                <img class='w-4 h-4' src="{% static "image/email.png" %}" alt="">
+            </div>
+            <p class="text-slate-600 font-medium">{{about.email}}</p>
+          </div>
+          <div class='flex items-center space-x-3 group'>
+            <div class="p-2 bg-brand-50 rounded-lg group-hover:bg-brand-100 transition-colors">
+                <img class='w-4 h-4' src="{% static "image/phone-call.png" %}" alt="">
+            </div>
+            <p class="text-slate-600 font-medium">{{about.phone}}</p>
+          </div>
         </div>
-        <div class='flex space-x-2'>
-          <img class='size-5' src="{% static "image/email.png" %}" alt="">
-          <p>{{about.email}}</p>
-        </div>
-        <div class='flex space-x-2'>
-          <img class='size-5' src="{% static "image/phone-call.png" %}" alt="">
-          <p>{{about.phone}}</p>
-          {% endif %}
-          {% endfor %}
-        </div>
+        {% endif %}
+        {% endfor %}
       </div>
   
       <!-- Social Media Links -->
-      <div class="flex flex-wrap justify-center gap-2 mb-4 md:gap-4 lg:gap-6 mt-3">
-        {% for data in data %}
-        {% if data.status %}
-        <a class='flex flex-col justify-center items-center basis-auto md:basis-auto lg:basis-auto' href="{{ data.url }}" target="_blank">
-            <img class="h-6 w-6 md:h-6 md:w-6 lg:h-7 lg:w-7" src="{{ data.logo.url }}" alt="">
-            <h2 class='text-white text-sm my-2 hover:text-gray-400'>{{data.title}}</h2>
-        </a>
+      <div class="md:col-span-5">
+        <h3 class="text-xs font-bold uppercase tracking-widest text-brand-600 font-display mb-6">Socials</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+            {% for data in data %}
+            {% if data.status %}
+            <a class='flex items-center space-x-3 text-slate-500 hover:text-brand-600 transition-all group' href="{{ data.url }}" target="_blank">
+                <div class="w-8 h-8 flex items-center justify-center rounded-md border border-slate-200 group-hover:border-brand-200 group-hover:bg-brand-50 transition-all overflow-hidden">
+                    <img class="h-4 w-4 grayscale group-hover:grayscale-0 transition-all object-contain" src="{{ data.get_logo_url }}" alt="{{ data.title }}">
+                </div>
+                <span class='text-sm font-medium'>{{data.title}}</span>
+            </a>
+            {% endif %}
+            {% endfor %}
+        </div>
+      </div>
+           
+      <!-- Navigation Links -->
+      <div class="md:col-span-3">
+        <h3 class="text-xs font-bold uppercase tracking-widest text-brand-600 font-display mb-6">Navigation</h3>
+        <ul class="space-y-3">
+            <li><a href="#home" class="text-slate-500 hover:text-brand-600 text-sm font-medium transition-colors">Home</a></li>
+            <li><a href="#skill" class="text-slate-500 hover:text-brand-600 text-sm font-medium transition-colors">Skills</a></li>
+            <li><a href="#project" class="text-slate-500 hover:text-brand-600 text-sm font-medium transition-colors">Projects</a></li>
+            {% if experience %}
+            <li><a href="#experience" class="text-slate-500 hover:text-brand-600 text-sm font-medium transition-colors">Experience</a></li>
+            {% endif %}
+            <li><a href="#contact" class="text-slate-500 hover:text-brand-600 text-sm font-medium transition-colors">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="mt-10 pt-6 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-3">
+        {% for about in about %}
+        {% if about.status %}
+        <p class="text-slate-400 text-sm">
+            © {{year}} {{about.first_name}} {{about.last_name}}. All rights reserved.
+        </p>
         {% endif %}
         {% endfor %}
-    </div>
-           
-          <!-- Navigation Links -->
-    <div class="text-white text-sm my-2">
-        <ul class="flex flex-row space-x-3 md:flex-col md:space-x-0 md:space-y-2">
-            <li><a href="#about" class="hover:text-gray-400">About</a></li>
-            <li><a href="#skill" class="hover:text-gray-400">Skills</a></li>
-            <li><a href="#project" class="hover:text-gray-400">Projects</a></li>
-            {% if experience %}
-            <li><a href="#experience" class="hover:text-gray-400">Experience</a></li>
-            {% endif %}
-            <li><a href="#contact" class="hover:text-gray-400">Contact</a></li>
-        </ul>
+        <p class="text-slate-300 text-[10px] uppercase tracking-widest font-bold">Made with passion</p>
     </div>
   </div>
-  
-<!-- Copyright Notice -->
- {% for about in about %}
- {% if about.status %}
-<div style="background-color: rgba(21, 4, 64, 0.9);" class=" text-white text-sm text-center py-2">
-    © {{year}} {{about.first_name}} {{about.last_name}}. All rights reserved.
-</div>
-{% endif %}
-{% endfor %}
-  </footer>
-    {% comment %} footerend {% endcomment %}
+</footer>
+<!-- footer end -->
+
+<script>
+
+    // Back to Top Button
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTop.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+            backToTop.classList.add('opacity-100', 'visible', 'translate-y-0');
+        } else {
+            backToTop.classList.add('opacity-0', 'invisible', 'translate-y-4');
+            backToTop.classList.remove('opacity-100', 'visible', 'translate-y-0');
+        }
+    });
+
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Intersection Observer for Active Links
+    const sections = document.querySelectorAll('section[id], div[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -70% 0px',
+        threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navLinks.forEach(link => {
+                    link.classList.remove('text-brand-600', 'font-bold');
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('text-brand-600', 'font-bold');
+                    }
+                });
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('#home, #skill, #project, #experience, #contact').forEach(section => {
+        observer.observe(section);
+    });
+</script>
   </body>
 </html>

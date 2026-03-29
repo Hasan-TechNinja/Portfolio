@@ -42,7 +42,27 @@ module.exports = {
         // '../../**/*.py'
     ],
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                sans: ['Inter', 'sans-serif'],
+                display: ['Outfit', 'sans-serif'],
+            },
+            colors: {
+                brand: {
+                    50: '#f0f4ff',
+                    100: '#e1e9fe',
+                    200: '#c7d6fe',
+                    300: '#a3b8fd',
+                    400: '#8193f9',
+                    500: '#5e68f0',
+                    600: '#474be6',
+                    700: '#3a39d1',
+                    800: '#3331aa',
+                    900: '#2d2e87',
+                    950: '#1b1b4f',
+                },
+            },
+        },
     },
     plugins: [
         /**
