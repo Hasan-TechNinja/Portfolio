@@ -1,9 +1,11 @@
+/* Global scroll & font settings */
 html {
     scroll-behavior: smooth;
 }
 
 body {
     scroll-behavior: smooth;
+    background-color: #f8fafc;
 }
 
 /* Smooth section transitions */
@@ -11,48 +13,394 @@ section, div[id] {
     scroll-margin-top: 5rem;
 }
 
-/* Form input refinements */
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="url"],
-textarea,
-select {
-    font-size: 0.875rem;
-    padding: 0.625rem 0.875rem;
-    border-radius: 0.75rem;
-    border: 1.5px solid #e2e8f0;
+/* Scrollbar styles */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Custom background mesh */
+.bg-gradient-mesh {
+    background-color: #f8fafc;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(94, 104, 240, 0.05) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.05) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(94, 104, 240, 0.03) 0px, transparent 50%);
+}
+
+/* Floating Blob Ornaments */
+.bg-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: -10;
+}
+.bg-blob-primary {
+    background: radial-gradient(circle, rgba(94, 104, 240, 0.08) 0%, rgba(94, 104, 240, 0) 70%);
+}
+.bg-blob-secondary {
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, rgba(6, 182, 212, 0) 70%);
+}
+
+/* Modern Glass Navbar */
+.navbar-floating {
+    margin-top: 1rem;
+    padding: 0 1rem;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.navbar-pill {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: 2rem;
+    box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.navbar-pill.scrolled {
+    background: #ffffff !important;
+    border-color: rgba(226, 232, 240, 0.9) !important;
+    box-shadow: 0 10px 40px -10px rgba(15, 23, 42, 0.12) !important;
+    transform: scale(0.98);
+}
+
+/* Clean Custom Navigation Links */
+#desktop-menu {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+}
+@media (min-width: 640px) {
+    #desktop-menu {
+        gap: 1.25rem !important;
+    }
+}
+.nav-link-custom {
+    position: relative;
+    color: #64748b !important;
+    font-weight: 600 !important;
+    font-size: 0.875rem !important;
     transition: all 0.2s ease;
+    padding: 0.5rem 0.75rem !important;
+    border-radius: 0.75rem;
+    display: inline-block !important;
+}
+.nav-link-custom:hover {
+    color: #474be6 !important;
+    background: rgba(94, 104, 240, 0.05) !important;
+}
+.nav-link-custom.active-link {
+    color: #474be6 !important;
+    background: rgba(94, 104, 240, 0.08) !important;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="tel"]:focus,
-input[type="url"]:focus,
-textarea:focus,
-select:focus {
+/* Premium Profile Picture Frame */
+.profile-frame {
+    position: relative;
+    border-radius: 2.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.08);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.profile-frame:hover {
+    transform: translateY(-8px) rotate(1deg);
+}
+.profile-decor {
+    position: absolute;
+    bottom: -1.5rem;
+    right: -1.5rem;
+    width: 6rem;
+    height: 6rem;
+    background: linear-gradient(135deg, #474be6 0%, #06b6d4 100%);
+    border-radius: 2rem;
+    z-index: -1;
+    opacity: 0.15;
+    filter: blur(10px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.profile-frame:hover .profile-decor {
+    transform: translate(10px, 10px) scale(1.1);
+    opacity: 0.25;
+}
+
+/* Premium Typography Elements */
+.hero-gradient-text {
+    background: linear-gradient(135deg, #474be6 0%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Buttons */
+.btn-primary-custom {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #474be6 0%, #3a39d1 100%);
+    color: white;
+    font-weight: 600;
+    border-radius: 1.25rem;
+    box-shadow: 0 10px 25px -5px rgba(71, 75, 230, 0.3);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-primary-custom:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 30px -5px rgba(71, 75, 230, 0.4);
+    filter: brightness(1.05);
+}
+.btn-primary-custom:active {
+    transform: translateY(-1px);
+}
+
+.btn-secondary-custom {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    color: #334155;
+    border: 1px solid #e2e8f0;
+    font-weight: 600;
+    border-radius: 1.25rem;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-secondary-custom:hover {
+    transform: translateY(-3px);
+    border-color: #cbd5e1;
+    background-color: #f8fafc;
+    color: #0f172a;
+    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.05);
+}
+
+/* Skill card and badge refinement */
+.skill-card-custom {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(241, 245, 249, 0.8);
+    border-radius: 2rem;
+    box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.03);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.skill-card-custom:hover {
+    transform: translateY(-6px);
+    background: white;
+    border-color: rgba(94, 104, 240, 0.2);
+    box-shadow: 0 20px 40px -10px rgba(94, 104, 240, 0.08);
+}
+.skill-badge-custom {
+    background: rgba(248, 250, 252, 0.8);
+    border: 1px solid #f1f5f9;
+    padding: 0.625rem 0.875rem;
+    border-radius: 1rem;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.skill-badge-custom:hover {
+    background: white;
+    border-color: rgba(94, 104, 240, 0.3);
+    color: #474be6;
+    box-shadow: 0 8px 16px -8px rgba(94, 104, 240, 0.2);
+    transform: translateY(-2px) scale(1.02);
+}
+
+/* Clean Project Filtering */
+.filter-btn-custom {
+    padding: 0.625rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #64748b;
+    border: 1px solid #e2e8f0;
+    background: white;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.01);
+}
+.filter-btn-custom:hover {
+    border-color: #cbd5e1;
+    color: #334155;
+    transform: translateY(-1px);
+}
+.filter-btn-custom.active {
+    background: #474be6;
+    color: white;
     border-color: #474be6;
-    box-shadow: 0 0 0 3px rgba(71, 75, 230, 0.1);
-    outline: none;
+    box-shadow: 0 10px 20px -5px rgba(71, 75, 230, 0.3);
 }
 
-textarea {
-    min-height: 100px;
-    resize: vertical;
+/* Project Card refinements */
+.project-card-custom {
+    background: white;
+    border: 1px solid rgba(241, 245, 249, 0.8);
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.03);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.project-card-custom:hover {
+    transform: translateY(-8px);
+    border-color: rgba(226, 232, 240, 0.8);
+    box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.08);
 }
 
-/* Subtle fade-in animation for sections */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(16px);
+/* Work Experience - Timeline Layout */
+.experience-timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 3rem auto;
+}
+.experience-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    width: 2px;
+    background: linear-gradient(to bottom, #e2e8f0, #cbd5e1 30%, #f1f5f9);
+}
+@media (min-width: 768px) {
+    .experience-timeline::before {
+        left: 50%;
+        margin-left: -1px;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+}
+.timeline-item {
+    position: relative;
+    margin-bottom: 4rem;
+}
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+.timeline-badge {
+    position: absolute;
+    top: 24px;
+    left: 20px;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #474be6;
+    border: 4px solid #f8fafc;
+    box-shadow: 0 0 0 4px rgba(71, 75, 230, 0.1);
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+@media (min-width: 768px) {
+    .timeline-badge {
+        left: 50%;
     }
 }
+.timeline-item:hover .timeline-badge {
+    background: #06b6d4;
+    box-shadow: 0 0 0 6px rgba(6, 182, 212, 0.2);
+    transform: translate(-50%, -50%) scale(1.2);
+}
+.timeline-card {
+    position: relative;
+    margin-left: 50px;
+    background: white;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: 2rem;
+    padding: 2rem;
+    box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.03);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (min-width: 768px) {
+    .timeline-card {
+        width: calc(50% - 40px);
+        margin-left: 0;
+    }
+    .timeline-item-left .timeline-card {
+        left: 0;
+    }
+    .timeline-item-right .timeline-card {
+        left: calc(50% + 40px);
+    }
+}
+.timeline-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(94, 104, 240, 0.15);
+    box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.08);
+}
 
-.animate-fade-in {
-    animation: fadeInUp 0.5s ease-out forwards;
+/* Form Input Refinements */
+.input-custom {
+    display: block;
+    width: 100%;
+    background-color: #f8fafc;
+    border: 1.5px solid #e2e8f0 !important;
+    border-radius: 1.25rem !important;
+    padding: 1rem 1.25rem !important;
+    font-size: 0.925rem !important;
+    color: #0f172a !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.input-custom:focus {
+    background-color: white;
+    border-color: #474be6 !important;
+    box-shadow: 0 0 0 4px rgba(71, 75, 230, 0.1) !important;
+    outline: none !important;
+}
+
+/* Contact Sidebar Styling */
+.contact-sidebar-custom {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-radius: 1.75rem;
+}
+
+/* Footer Social Icon Pill */
+.social-icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 1rem;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.social-icon-btn:hover {
+    background: white;
+    color: #474be6;
+    border-color: rgba(94, 104, 240, 0.3);
+    box-shadow: 0 10px 20px -8px rgba(94, 104, 240, 0.3);
+    transform: translateY(-3px);
+}
+
+/* Company Logo Styling in Experience */
+.experience-logo-container {
+    width: 3.5rem !important;
+    height: 3.5rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 0.75rem !important;
+    background-color: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    flex-shrink: 0 !important;
+    overflow: hidden !important;
+    padding: 0.375rem !important;
+}
+.experience-logo-img {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+}
+
+/* Premium Footer Spacing & Height Design */
+footer {
+    margin-top: 6rem !important;
+    padding-top: 5rem !important;
+    padding-bottom: 5rem !important;
+    border-top: 1px solid #f1f5f9 !important;
+    background-color: #ffffff !important;
 }

@@ -1,85 +1,105 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}{{about.first_name}}{% endblock title %}
+{% block title %}{{about.first_name}} - Portfolio{% endblock title %}
 {% block content %}
 <!-- home section start -->
-<div id='home' class='pt-24 md:pt-32'></div>
-{% for about in about %}
-{% if about.status %}
-    <div class="container mx-auto px-4 md:px-6 bg-white rounded-lg">
+<div id='home' class='pt-24 md:pt-32 pb-16 relative overflow-hidden'>
+    <!-- Decorative background blobs -->
+    <div class="bg-blob bg-blob-primary w-[500px] h-[500px] -top-40 -left-40"></div>
+    <div class="bg-blob bg-blob-secondary w-[400px] h-[400px] top-60 -right-20"></div>
+
+    {% for about in about %}
+    {% if about.status %}
+    <div class="container mx-auto px-4 md:px-6 max-w-7xl">
         <div class='flex flex-col-reverse md:flex-row items-center justify-between gap-12 py-8'>
             <div class='md:w-3/5 space-y-6'>
-                <div class='space-y-2'>
-                    <h3 class="text-brand-600 font-bold uppercase tracking-widest text-xs">{{ about.role }}</h3>
-                    <h1 class='font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight'>
-                        Hi, I'm <span class="text-brand-600">{{about.first_name}}</span> {{about.last_name}}
+                <div class='space-y-4'>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-50 text-brand-700 text-xs font-bold uppercase tracking-wider rounded-full border border-brand-100/50">
+                        {{ about.role }}
+                    </span>
+                    <h1 class='font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 leading-tight tracking-tight'>
+                        Hi, I'm <span class="hero-gradient-text">{{about.first_name}}</span> {{about.last_name}}
                     </h1>
-                    <p class='text-lg text-slate-500 font-medium italic'>{{about.education}}</p>
+                    <p class='text-lg md:text-xl text-slate-500 font-medium italic'>
+                        {{about.education}}
+                    </p>
                 </div>
                 
-                <div class='prose prose-slate prose-lg max-w-none text-slate-600 leading-relaxed'>
+                <div class='prose prose-slate prose-lg max-w-none text-slate-600 leading-relaxed font-normal'>
                     {{about.description}}
                 </div>
                 
                 <div class='pt-6 flex flex-wrap gap-4'>
-                    <a href="{{about.CV.url}}" target="_blank" class='inline-flex items-center px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-2xl transition-all hover:shadow-xl hover:-translate-y-1'>
+                    <a href="{{about.CV.url}}" target="_blank" class='btn-primary-custom px-8 py-4'>
                         Download CV
                         <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                     </a>
-                    <a href="#contact" class='inline-flex items-center px-8 py-4 bg-white border-2 border-slate-200 hover:border-brand-500 text-slate-700 font-bold rounded-2xl transition-all hover:bg-brand-50'>
+                    <a href="#contact" class='btn-secondary-custom px-8 py-4'>
                         Contact Me
                     </a>
                 </div>
             </div>
+            
             <div class='md:w-2/5 flex justify-center sticky top-24'>
-                <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-tr from-brand-600 to-teal-400 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-                    <img class='relative rounded-3xl size-64 md:size-80 lg:size-96 object-cover shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]' src="{{about.image.url}}" alt="{{about.first_name}}">
+                <div class="profile-frame">
+                    <img class='rounded-[1.75rem] size-64 md:size-80 lg:size-96 object-cover shadow-inner' src="{{about.image.url}}" alt="{{about.first_name}}">
+                    <div class="profile-decor"></div>
                 </div>
             </div>
         </div>
     </div>
-{% endif %}
-{% endfor %}
+    {% endif %}
+    {% endfor %}
+</div>
 <!-- home section end -->
 
 <!-- skills section start -->
-<div id='skill' class='py-20 relative overflow-hidden z-0'>
+<div id='skill' class='py-20 relative overflow-hidden'>
     <!-- Decorative background elements -->
-    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-50 rounded-full blur-[100px] -z-10 opacity-70 translate-x-1/3 -translate-y-1/3"></div>
-    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-teal-50/50 rounded-full blur-[80px] -z-10 opacity-70 -translate-x-1/3 translate-y-1/3"></div>
+    <div class="bg-blob bg-blob-secondary w-[400px] h-[400px] -bottom-20 -left-20"></div>
+    <div class="bg-blob bg-blob-primary w-[500px] h-[500px] -top-20 -right-20"></div>
 
-    <div class="container mx-auto px-4 md:px-6">
-        <div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <div class="md:w-2/3">
-                <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight">Technical <span class="text-brand-600">Expertise</span></h2>
-                <div class='w-20 h-1.5 bg-brand-600 rounded-full mt-3'></div>
-                <p class="mt-6 text-slate-500 text-base leading-relaxed max-w-2xl">
-                    A comprehensive overview of my technical skills and the technologies I utilize to architect, develop, and deploy scalable solutions.
-                </p>
-            </div>
+    <div class="container mx-auto px-4 md:px-6 max-w-7xl">
+        <div class="mb-16 text-center md:text-left">
+            <h2 class="font-display text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+                Technical <span class="hero-gradient-text">Expertise</span>
+            </h2>
+            <div class='w-20 h-1 bg-brand-600 rounded-full mt-3 mx-auto md:mx-0'></div>
+            <p class="mt-6 text-slate-500 text-lg leading-relaxed max-w-2xl">
+                A comprehensive overview of my technical skills and the technologies I utilize to architect, develop, and deploy scalable solutions.
+            </p>
         </div>
         
         {% if skill_categories %}
         <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
             {% for category, skills in skill_categories.items %}
-            <div class="bg-white/80 backdrop-blur-xl p-8 rounded-[2rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(79,70,229,0.08)] transition-all duration-500 hover:-translate-y-1 group">
+            <div class="skill-card-custom p-8">
                 <div class="flex items-center gap-4 mb-8 border-b border-slate-100 pb-6">
-                    <div class="w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center border border-brand-100/50 text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition-colors duration-500 shadow-sm">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
-                        </svg>
+                    <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center border border-brand-100/50 text-brand-600 shadow-sm">
+                        {% if category == 'Languages' %}
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                        {% elif category == 'Frameworks' %}
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                        {% elif category == 'Databases' %}
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.58 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.58 4 8 4s8-1.79 8-4M4 7c0-2.21 3.58-4 8-4s8 1.79 8 4m0 5c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></svg>
+                        {% elif 'Tools' in category %}
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        {% elif 'Cloud' in category or 'DevOps' in category %}
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+                        {% else %}
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 14a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+                        {% endif %}
                     </div>
-                    <h3 class="font-display font-black text-lg md:text-xl lg:text-2xl text-slate-800 tracking-tight">{{ category }}</h3>
+                    <h3 class="font-display font-black text-xl text-slate-800 tracking-tight">{{ category }}</h3>
                 </div>
                 
-                <div class="grid grid-cols-2 gap-y-6 gap-x-4">
+                <div class="grid grid-cols-2 gap-y-4 gap-x-4">
                     {% for skill in skills %}
-                    <div class="flex items-center gap-3.5 group/skill">
-                        <div class="w-11 h-11 rounded-xl bg-slate-50 flex flex-shrink-0 items-center justify-center border border-slate-100 group-hover/skill:bg-white group-hover/skill:border-brand-200 group-hover/skill:shadow-md transition-all duration-300">
-                            <img class="w-5 h-5 object-contain group-hover/skill:scale-110 transition-transform duration-300" src="{{ skill.image.url }}" alt="{{ skill.name }}">
+                    <div class="skill-badge-custom flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-white flex flex-shrink-0 items-center justify-center border border-slate-100 shadow-sm overflow-hidden">
+                            <img class="w-5 h-5 object-contain" src="{{ skill.image.url }}" alt="{{ skill.name }}">
                         </div>
-                        <span class="text-[14px] font-bold text-slate-600 group-hover/skill:text-brand-700 transition-colors drop-shadow-sm font-sans">{{ skill.name }}</span>
+                        <span class="text-xs font-bold text-slate-700 tracking-tight">{{ skill.name }}</span>
                     </div>
                     {% endfor %}
                 </div>
@@ -91,21 +111,24 @@
 </div>
 <!-- skills section end -->
 
-
 <!-- projects start here -->
-<div id='project' class="py-20">
-    <div class="container mx-auto px-4 md:px-6">
-        <div class="flex flex-col md:flex-row items-center justify-between mb-12 gap-8">
-            <div>
-                <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900">Featured Projects</h2>
-                <div class='w-20 h-1.5 bg-brand-600 rounded-full mt-3'></div>
+<div id='project' class="py-20 relative overflow-hidden">
+    <div class="bg-blob bg-blob-primary w-[450px] h-[450px] top-40 -left-20"></div>
+
+    <div class="container mx-auto px-4 md:px-6 max-w-7xl">
+        <div class="flex flex-col md:flex-row items-center justify-between mb-16 gap-8">
+            <div class="text-center md:text-left">
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+                    Featured <span class="hero-gradient-text">Projects</span>
+                </h2>
+                <div class='w-20 h-1 bg-brand-600 rounded-full mt-3 mx-auto md:mx-0'></div>
             </div>
             
             <!-- Category Filter -->
-            <div class="flex flex-wrap gap-2" id="project-filters">
-                <button class="filter-btn active px-6 py-2.5 rounded-full text-xs font-bold transition-all duration-300 bg-brand-600 text-white shadow-lg shadow-brand-200" data-filter="all">All</button>
+            <div class="flex flex-wrap gap-2 justify-center" id="project-filters">
+                <button class="filter-btn-custom active" data-filter="all">All</button>
                 {% for cat in project_categories %}
-                <button class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold transition-all duration-300 bg-white text-slate-600 border border-slate-200 hover:border-brand-300 hover:bg-brand-50" data-filter="{{ cat.key }}">{{ cat.label }}</button>
+                <button class="filter-btn-custom" data-filter="{{ cat.key }}">{{ cat.label }}</button>
                 {% endfor %}
             </div>
         </div>
@@ -113,30 +136,30 @@
         <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8' id="projects-grid">
             {% for project in project %}
             {% if project.status %}
-            <div class="project-card group flex flex-col bg-white border border-slate-100 rounded-3xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2" data-category="{{ project.category }}">
-                <div class="relative aspect-video overflow-hidden">
+            <div class="project-card-custom group flex flex-col" data-category="{{ project.category }}">
+                <div class="relative aspect-video overflow-hidden bg-slate-900">
                     <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="{{ project.image.url }}" alt="{{ project.name }}" />
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
-                <div class="pt-6 px-6 pb-2">
-                    <div class="flex justify-between items-start mb-4">
+                <div class="pt-6 px-6 pb-2 flex-grow">
+                    <div class="flex justify-between items-start mb-4 gap-2">
                         <h3 class="font-display font-bold text-xl text-slate-900 group-hover:text-brand-600 transition-colors">{{ project.name }}</h3>
                         {% if project.category %}
-                        <span class="ml-2 flex-shrink-0 px-3 py-1 bg-brand-50 text-brand-700 text-[10px] font-bold uppercase tracking-wider rounded-full">{{ project.get_category_display }}</span>
+                        <span class="flex-shrink-0 px-3 py-1 bg-brand-50 text-brand-700 text-[10px] font-bold uppercase tracking-wider rounded-md">{{ project.get_category_display }}</span>
                         {% endif %}
                     </div>
                     <p class="text-slate-600 text-sm leading-relaxed mb-6 line-clamp-3">
                         {{ project.description }}
                     </p>
                 </div>
-                <div class="mt-auto p-6 pt-0 flex gap-3">
+                <div class="p-6 pt-0 mt-auto flex gap-3">
                     {% if project.live %}
-                    <a href="{{ project.live }}" target="_blank" class="flex-1 text-center py-2.5 bg-slate-900 text-white font-bold text-xs rounded-xl hover:bg-brand-600 transition-colors">
+                    <a href="{{ project.live }}" target="_blank" class="flex-1 text-center py-2.5 bg-slate-900 text-white font-bold text-xs rounded-xl hover:bg-brand-600 transition-colors shadow-sm">
                         Live Demo
                     </a>
                     {% endif %}
                     {% if project.github %}
-                    <a href="{{ project.github }}" target="_blank" class="flex-1 text-center py-2.5 bg-white border border-slate-200 text-slate-700 font-bold text-xs rounded-xl hover:border-brand-500 hover:bg-brand-50 transition-colors">
+                    <a href="{{ project.github }}" target="_blank" class="flex-1 text-center py-2.5 bg-white border border-slate-200 text-slate-700 font-bold text-xs rounded-xl hover:border-brand-500 hover:bg-brand-50 transition-colors shadow-sm">
                         GitHub
                     </a>
                     {% endif %}
@@ -151,57 +174,69 @@
 
 <!-- Experience start -->
 {% if experience %}
-<div id='experience' class="py-20">
-    <div class="container mx-auto px-4 md:px-6">
-        <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-12 border-l-4 border-brand-600 pl-4">Work Experience</h2>
+<div id='experience' class="py-20 relative overflow-hidden">
+    <div class="bg-blob bg-blob-secondary w-[500px] h-[500px] -bottom-20 -right-20"></div>
+
+    <div class="container mx-auto px-4 md:px-6 max-w-7xl">
+        <div class="mb-16 text-center">
+            <h2 class="font-display text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+                Work <span class="hero-gradient-text">Experience</span>
+            </h2>
+            <div class='w-20 h-1 bg-brand-600 rounded-full mt-3 mx-auto'></div>
+        </div>
         
-        <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+        <div class="experience-timeline">
             {% for detail in experience_details %}
-            <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm transition-all hover:shadow-xl group"> 
-                <div class='flex items-center gap-4 mb-6'>
-                    {% if detail.experience.company_logo %}
-                    <div class="w-16 h-16 rounded-2xl bg-slate-50 p-2 flex items-center justify-center border border-slate-100">
-                        <img class='max-w-full max-h-full object-contain' src="{{ detail.experience.company_logo.url }}" alt="{{ detail.experience.company_name }}">
+            <div class="timeline-item {% if forloop.counter|divisibleby:2 %}timeline-item-right{% else %}timeline-item-left{% endif %}">
+                <div class="timeline-badge"></div>
+                <div class="timeline-card">
+                    <div class='flex items-center gap-4 mb-4'>
+                        {% if detail.experience.company_logo %}
+                        <div class="experience-logo-container">
+                            <img class="experience-logo-img" src="{{ detail.experience.company_logo.url }}" alt="{{ detail.experience.company_name }}">
+                        </div>
+                        {% endif %}
+                        <div>
+                            <h3 class='font-display font-bold text-lg text-slate-900 leading-snug'>{{ detail.experience.company_name }}</h3>
+                            <p class="text-brand-600 text-sm font-semibold">{{ detail.experience.job_title }}</p>
+                        </div>
+                    </div>
+                    
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                        {{ detail.experience.description }}
+                    </p>
+                    
+                    <div class="grid grid-cols-3 gap-2 py-3 border-y border-slate-100 text-[11px] mb-6">
+                        <div>
+                            <span class="block text-slate-400 font-bold uppercase tracking-wider mb-0.5">Period</span>
+                            <span class="text-slate-700 font-semibold">{{ detail.experience.start_date|date:"M Y" }} — {{ detail.experience.end_date|date:"M Y"|default:"Present" }}</span>
+                        </div>
+                        <div>
+                            <span class="block text-slate-400 font-bold uppercase tracking-wider mb-0.5">Duration</span>
+                            <span class="text-slate-700 font-semibold">{{ detail.duration }}</span>
+                        </div>
+                        <div>
+                            <span class="block text-slate-400 font-bold uppercase tracking-wider mb-0.5">Location</span>
+                            <span class="text-slate-700 font-semibold">{{ detail.experience.location }}</span>
+                        </div>
+                    </div>
+                    
+                    {% if detail.experience.technologies %}
+                    <div class="flex flex-wrap gap-1.5 mb-6">
+                        {% for tech in detail.experience.technologies_list %}
+                        <span class="px-2.5 py-1 bg-brand-50/50 text-brand-700 text-[10px] font-bold rounded-md">{{ tech }}</span>
+                        {% endfor %}
                     </div>
                     {% endif %}
-                    <div>
-                        <h3 class='font-display font-bold text-xl text-slate-900'>{{ detail.experience.company_name }}</h3>
-                        <p class="text-brand-600 text-sm font-semibold">{{ detail.experience.job_title }}</p>
-                    </div>
-                </div>
-                
-                <p class="text-slate-600 text-sm leading-relaxed mb-8 min-h-[4.5rem]">
-                    {{ detail.experience.description }}
-                </p>
-                
-                <div class="space-y-4 pt-6 border-t border-slate-100">
-                    <div class="flex items-center justify-between text-xs">
-                        <span class="text-slate-400 font-bold uppercase tracking-widest">Period</span>
-                        <span class="text-slate-700 font-bold">{{ detail.experience.start_date|date:"M Y" }} — {{ detail.experience.end_date|date:"M Y"|default:"Present" }}</span>
-                    </div>
-                    <div class="flex items-center justify-between text-xs">
-                        <span class="text-slate-400 font-bold uppercase tracking-widest">Duration</span>
-                        <span class="text-slate-700 font-bold">{{ detail.duration }}</span>
-                    </div>
-                    <div class="flex items-center justify-between text-xs">
-                        <span class="text-slate-400 font-bold uppercase tracking-widest">Location</span>
-                        <span class="text-slate-700 font-bold">{{ detail.experience.location }}</span>
-                    </div>
-                </div>
-                
-                {% if detail.experience.technologies %}
-                <div class="mt-6 flex flex-wrap gap-1.5">
-                    {% for tech in detail.experience.technologies_list %}
-                    <span class="px-2.5 py-1 bg-brand-50 text-brand-700 text-[10px] font-bold rounded-full">{{ tech }}</span>
-                    {% endfor %}
-                </div>
-                {% endif %}
 
-                <div class="mt-6">
-                    <a href="{{ detail.experience.company_website }}" target='_blank' class='inline-flex items-center text-sm font-bold text-brand-600 hover:text-brand-700 transition-colors'>
-                        Visit Website
-                        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                    </a>
+                    {% if detail.experience.company_website and detail.experience.company_website != '#' %}
+                    <div>
+                        <a href="{{ detail.experience.company_website }}" target='_blank' class='inline-flex items-center text-xs font-bold text-brand-600 hover:text-brand-700 transition-colors'>
+                            Visit Website
+                            <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}
@@ -211,33 +246,34 @@
 {% endif %}
 <!-- Experience end -->
 
-
 <!-- contact section start -->
-<div id='contact' class='py-20'>
+<div id='contact' class='py-20 relative overflow-hidden'>
+    <div class="bg-blob bg-blob-primary w-[400px] h-[400px] top-20 -left-20"></div>
+
     <div class="container mx-auto px-4 md:px-6 max-w-6xl">
-        <div class='bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-slate-100 flex flex-col md:flex-row'>
-            <div class="md:w-1/3 bg-slate-900 p-12 text-white flex flex-col justify-between">
-                <div>
-                    <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold mb-6">Let's Talk</h2>
-                    <p class="text-slate-400 leading-relaxed">
+        <div class='contact-card-custom overflow-hidden flex flex-col md:flex-row'>
+            <div class="md:w-1/3 contact-sidebar-custom p-12 text-white flex flex-col justify-between">
+                <div class="space-y-6">
+                    <h2 class="font-display text-3xl font-bold tracking-tight">Let's Talk</h2>
+                    <p class="text-slate-400 leading-relaxed font-normal">
                         Interested in working together? Drop me a message and I'll get back to you as soon as possible.
                     </p>
                 </div>
                 
-                <div class="space-y-4 pt-12">
+                <div class="space-y-6 pt-12">
                     {% for about in about %}
                     {% if about.status %}
                     <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center">
-                            <svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                        <div class="w-10 h-10 rounded-xl bg-slate-800/80 flex items-center justify-center flex-shrink-0 text-brand-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
                         </div>
-                        <span class="text-sm font-medium">{{ about.phone }}</span>
+                        <span class="text-sm font-semibold text-slate-200">{{ about.phone }}</span>
                     </div>
                     <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center">
-                            <svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        <div class="w-10 h-10 rounded-xl bg-slate-800/80 flex items-center justify-center flex-shrink-0 text-brand-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                         </div>
-                        <span class="text-sm font-medium">{{ about.email }}</span>
+                        <span class="text-sm font-semibold text-slate-200">{{ about.email }}</span>
                     </div>
                     {% endif %}
                     {% endfor %}
@@ -280,18 +316,14 @@
 <script>
     // Live Filtering for Projects
     document.addEventListener('DOMContentLoaded', () => {
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const projectsGrid = document.getElementById('projects-grid');
-        const projects = document.querySelectorAll('.project-card');
+        const filterButtons = document.querySelectorAll('.filter-btn-custom');
+        const projects = document.querySelectorAll('.project-card-custom');
 
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
                 // Update active button styles
-                filterButtons.forEach(btn => btn.classList.remove('active', 'bg-brand-600', 'text-white', 'shadow-lg', 'shadow-brand-200'));
-                filterButtons.forEach(btn => btn.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200'));
-                
-                button.classList.add('active', 'bg-brand-600', 'text-white', 'shadow-lg', 'shadow-brand-200');
-                button.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
 
                 // Filter logic
                 const filterValue = button.getAttribute('data-filter');
